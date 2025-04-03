@@ -30,6 +30,15 @@ interface ChatContextType {
 
 const ChatContext = createContext<ChatContextType | undefined>(undefined)
 
+// Generate a unique ID (replacement for crypto.randomUUID which isn't available in all environments)
+function generateId(): string {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
 export function ChatProvider({ children }: { children: ReactNode }) {
   const [chats, setChats] = useState<Chat[]>(() => {
     // Get chats from localStorage
@@ -64,7 +73,7 @@ export function ChatProvider({ children }: { children: ReactNode }) {
   }, [chats])
 
   const createChat = (title: string) => {
-    const id = crypto.randomUUID()
+    const id = generateId();
     const newChat: Chat = {
       id,
       title,
@@ -103,7 +112,7 @@ export function ChatProvider({ children }: { children: ReactNode }) {
   const addMessageToChat = (chatId: string, message: Omit<ChatMessage, "id" | "createdAt">) => {
     const newMessage: ChatMessage = {
       ...message,
-      id: crypto.randomUUID(),
+      id: generateId(),
       createdAt: new Date()
     }
     

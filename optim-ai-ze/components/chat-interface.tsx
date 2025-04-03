@@ -8,7 +8,6 @@ import { useChat } from "ai/react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
-import { Avatar } from "@/components/ui/avatar"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import {
   Send,
@@ -23,24 +22,17 @@ import {
   Copy,
   Paperclip,
   Smile,
-  MoreHorizontal,
   RefreshCw,
   Trash2,
   User2,
   Bot,
   Loader2,
-  Heart,
-  ThumbsUp,
-  ThumbsDown,
-  Laugh,
-  Lightbulb,
-  Mic,
-  MicOff,
   Search,
   Download,
-  Keyboard,
   Laptop,
   Plus,
+  Mic,
+  MicOff,
 } from "lucide-react"
 import { usePrompts } from "@/context/prompt-context"
 import { useRules } from "@/context/rule-context"
@@ -48,21 +40,14 @@ import { useUser } from "@/context/user-context"
 import { VisuallyHidden } from "@/components/visually-hidden"
 import { Badge } from "@/components/ui/badge"
 import { PromptSelector } from "@/components/prompt-selector"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { toast } from "@/components/ui/use-toast"
 import { cn } from "@/lib/utils"
 import { MessageContent } from "@/components/message-content"
 import { ChatSuggestions } from "@/components/chat-suggestions"
-import { TypingIndicator } from "@/components/typing-indicator"
 import { useRoles } from "@/context/role-context"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
-import type { Components } from 'react-markdown'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { useChats } from "@/context/chat-context"
 
@@ -96,7 +81,6 @@ export function ChatInterface() {
   const [isScrolledToBottom, setIsScrolledToBottom] = useState(true)
   const [showScrollToBottom, setShowScrollToBottom] = useState(false)
   const [isRulesExpanded, setIsRulesExpanded] = useState(false)
-  const [isRoleExpanded, setIsRoleExpanded] = useState(false)
   const [isPromptCollapsed, setIsPromptCollapsed] = useState(true)
   const [isProfileCollapsed, setIsProfileCollapsed] = useState(true)
   const [isMainPromptCollapsed, setIsMainPromptCollapsed] = useState(true)
@@ -217,7 +201,7 @@ export function ChatInterface() {
     }
   }
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     
     if (!input.trim()) return
@@ -274,7 +258,7 @@ export function ChatInterface() {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
-      handleFormSubmit(e as unknown as React.FormEvent)
+      handleFormSubmit(e as unknown as React.FormEvent<HTMLFormElement>)
     }
   }
 
@@ -285,8 +269,6 @@ export function ChatInterface() {
       hour12: true
     }).format(date)
   }
-
-  const isMobile = typeof window !== "undefined" ? window.innerWidth < 768 : false
 
   const handleSuggestionClick = (suggestion: string) => {
     if (inputRef.current) {
@@ -384,7 +366,7 @@ export function ChatInterface() {
           if (base64Audio) {
             try {
               // Show transcribing status
-              handleInputChange({ target: { value: "Transcribing audio..." } } as any);
+              handleInputChange({ target: { value: "Transcribing audio..." } } as React.ChangeEvent<HTMLTextAreaElement>);
               
               // Call Whisper API for transcription
               const response = await fetch('/api/transcribe', {
@@ -396,11 +378,11 @@ export function ChatInterface() {
               if (!response.ok) throw new Error('Transcription failed');
               
               const data = await response.json();
-              handleInputChange({ target: { value: data.text } } as any);
+              handleInputChange({ target: { value: data.text } } as React.ChangeEvent<HTMLTextAreaElement>);
             } catch (error) {
               console.error('Transcription error:', error);
               setRecordingError('Failed to transcribe audio');
-              handleInputChange({ target: { value: "" } } as any);
+              handleInputChange({ target: { value: "" } } as React.ChangeEvent<HTMLTextAreaElement>);
               toast({
                 title: "Transcription Failed",
                 description: "Could not transcribe your audio. Please try again or type your message.",
@@ -1207,34 +1189,52 @@ export function ChatInterface() {
                     <Send className="h-4 w-4" aria-hidden="true" />
                   </Button>
                   
-                  <Popover open={isAttachmentPopoverOpen} onOpenChange={setIsAttachmentPopoverOpen}>
-                    <PopoverTrigger asChild>
-                      <Button 
-                        type="button" 
-                        variant="outline" 
-                        size="icon" 
-                        aria-label="Add attachment"
-                        className="flex-1"
-                      >
-                        <Paperclip className="h-4 w-4" aria-hidden="true" />
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent side="top" align="end" className="w-56">
-                      <div className="space-y-2">
-                        <h3 className="font-medium text-sm">Add to your message</h3>
-                        <div className="grid grid-cols-2 gap-2">
-                          <Button variant="outline" size="sm" className="justify-start">
-                            <Paperclip className="h-4 w-4 mr-2" />
-                            File
-                          </Button>
-                          <Button variant="outline" size="sm" className="justify-start">
-                            <Smile className="h-4 w-4 mr-2" />
-                            Emoji
-                          </Button>
+                  <div className="flex gap-2">
+                    <Popover open={isAttachmentPopoverOpen} onOpenChange={setIsAttachmentPopoverOpen}>
+                      <PopoverTrigger asChild>
+                        <Button 
+                          type="button" 
+                          variant="outline" 
+                          size="icon" 
+                          aria-label="Add attachment"
+                          className="flex-1"
+                        >
+                          <Paperclip className="h-4 w-4" aria-hidden="true" />
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent side="top" align="end" className="w-56">
+                        <div className="space-y-2">
+                          <h3 className="font-medium text-sm">Add to your message</h3>
+                          <div className="grid grid-cols-2 gap-2">
+                            <Button variant="outline" size="sm" className="justify-start">
+                              <Paperclip className="h-4 w-4 mr-2" />
+                              File
+                            </Button>
+                            <Button variant="outline" size="sm" className="justify-start">
+                              <Smile className="h-4 w-4 mr-2" />
+                              Emoji
+                            </Button>
+                          </div>
                         </div>
-                      </div>
-                    </PopoverContent>
-                  </Popover>
+                      </PopoverContent>
+                    </Popover>
+                    
+                    {/* Voice recording button */}
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="icon"
+                      onClick={isRecording ? stopRecording : startRecording}
+                      aria-label={isRecording ? "Stop recording" : "Start voice recording"}
+                      className={`flex-1 ${isRecording ? 'bg-red-100 dark:bg-red-900/30' : ''}`}
+                    >
+                      {isRecording ? (
+                        <MicOff className="h-4 w-4 text-red-500" />
+                      ) : (
+                        <Mic className="h-4 w-4" />
+                      )}
+                    </Button>
+                  </div>
                 </div>
               </div>
               
@@ -1352,6 +1352,13 @@ export function ChatInterface() {
           <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => setIsSearchOpen(false)}>
             <X className="h-4 w-4" />
           </Button>
+        </div>
+      )}
+
+      {/* Display recording error if present */}
+      {recordingError && (
+        <div className="text-xs text-red-500 mt-1">
+          {recordingError}
         </div>
       )}
     </div>
