@@ -1,0 +1,2 @@
+# This file ensures that the logs directory exists when cloning the repository.
+# The directory is used to store application and database logs. 

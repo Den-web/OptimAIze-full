@@ -1,0 +1,44 @@
+# Node.js dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Logs
+logs/*
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Keep .env examples
+!.env.example
+!.env.development
+
+# MongoDB data
+data/
+
+# IDE and editor folders
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+
+# Docker
+.docker-compose.override.yml
+
+# Keep gitkeep files
+!logs/.gitkeep
+!logs/mongodb/.gitkeep 
