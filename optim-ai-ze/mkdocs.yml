@@ -1,0 +1,23 @@
+site_name: Velvet Secrets Online Shop Docs
+nav:
+  - Главная: README.md
+  - Технический стек: TECH_STACK.md
+  - Архитектура:
+      - Архитектура backend: BACKEND_ARCHITECTURE.md
+      - Архитектура SaaS/Express: SAAS_EXPRESS_ARCHITECTURE.md
+      - Расширенная архитектура: ADVANCED_ARCHITECTURE.md
+      - Структура базы данных: DATABASE_STRUCTURE.md
+      - Структура проекта: PROJECT_STRUCTURE.md
+  - Дорожные карты:
+      - Дорожная карта MVP: MVP_ROADMAP.md
+      - Дорожная карта реализации: IMPLEMENTATION_ROADMAP.md
+  - Разработка:
+      - Трекер разработки: DEVELOPMENT_TRACKER.md
+      - Frontend статус: FRONTEND_STATUS.md
+
+# Папка с документацией
+docs_dir: docs
+
+# Тема
+theme:
+  name: readthedocs
