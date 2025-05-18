@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Технический стек - Velvet Secrets Online Shop Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0442\u0435\u043a";
+        var mkdocs_page_input_path = "TECH_STACK.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Velvet Secrets Online Shop Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../README.md">Главная</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Технический стек</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#system-architecture-flow">System Architecture Flow</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-frontend-stack">1. Frontend Stack</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#nextjs-v14">Next.js (v14+)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-backend-stack">2. Backend Stack</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#expressjs-server">Express.js Server</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#supabase-integration">Supabase Integration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#redis-stack">Redis Stack</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-development-tools">3. Development Tools</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#code-quality">Code Quality</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#testing-stack">Testing Stack</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-data-flow-architecture">4. Data Flow Architecture</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#authentication-flow">Authentication Flow</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#data-request-flow">Data Request Flow</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-development-environment-requirements">5. Development Environment Requirements</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#required-tools">Required Tools</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#vs-code-extensions">VS Code Extensions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#environment-variables-structure">Environment Variables Structure</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6-communication-protocols">6. Communication Protocols</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#api-standards">API Standards</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#security-measures">Security Measures</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#7-deployment-architecture">7. Deployment Architecture</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#development">Development</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#production">Production</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#questions-to-answer-before-development">Questions to Answer Before Development:</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Архитектура</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../BACKEND_ARCHITECTURE/">Архитектура backend</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SAAS_EXPRESS_ARCHITECTURE/">Архитектура SaaS/Express</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ADVANCED_ARCHITECTURE/">Расширенная архитектура</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../DATABASE_STRUCTURE/">Структура базы данных</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PROJECT_STRUCTURE/">Структура проекта</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Дорожные карты</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../MVP_ROADMAP/">Дорожная карта MVP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../IMPLEMENTATION_ROADMAP/">Дорожная карта реализации</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Разработка</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../DEVELOPMENT_TRACKER/">Трекер разработки</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../FRONTEND_STATUS/">Frontend статус</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Velvet Secrets Online Shop Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Технический стек</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="technical-stack-dependencies-flow">Technical Stack &amp; Dependencies Flow</h1>
+<h2 id="system-architecture-flow">System Architecture Flow</h2>
+<pre><code class="language-mermaid">graph TD
+    Client[Next.js Frontend]
+    Express[Express Backend]
+    Supabase[(Supabase)]
+    Redis[(Redis)]
+    Bull[Bull Queue]
+
+    Client --&gt;|API Calls| Express
+    Express --&gt;|Data &amp; Auth| Supabase
+    Express --&gt;|Caching| Redis
+    Express --&gt;|Background Jobs| Bull
+    Bull --&gt;|Uses| Redis
+</code></pre>
+<h2 id="1-frontend-stack">1. Frontend Stack</h2>
+<h3 id="nextjs-v14">Next.js (v14+)</h3>
+<ul>
+<li>TypeScript</li>
+<li>Tailwind CSS</li>
+<li>Shadcn/ui components</li>
+<li>React Query for data fetching</li>
+<li>Zustand for state management</li>
+<li>React Hook Form for forms</li>
+</ul>
+<p><strong>Key Dependencies:</strong></p>
+<pre><code class="language-json">{
+  &quot;dependencies&quot;: {
+    &quot;next&quot;: &quot;^14.0.0&quot;,
+    &quot;react&quot;: &quot;^18.0.0&quot;,
+    &quot;react-dom&quot;: &quot;^18.0.0&quot;,
+    &quot;@tanstack/react-query&quot;: &quot;^5.0.0&quot;,
+    &quot;zustand&quot;: &quot;^4.0.0&quot;,
+    &quot;react-hook-form&quot;: &quot;^7.0.0&quot;,
+    &quot;@hookform/resolvers&quot;: &quot;^3.0.0&quot;,
+    &quot;zod&quot;: &quot;^3.0.0&quot;,
+    &quot;tailwindcss&quot;: &quot;^3.0.0&quot;,
+    &quot;@radix-ui/react&quot;: &quot;^1.0.0&quot;
+  }
+}
+</code></pre>
+<h2 id="2-backend-stack">2. Backend Stack</h2>
+<h3 id="expressjs-server">Express.js Server</h3>
+<ul>
+<li>TypeScript</li>
+<li>Express.js</li>
+<li>Zod for validation</li>
+<li>Winston for logging</li>
+<li>Cors for security</li>
+<li>Helmet for headers</li>
+</ul>
+<p><strong>Key Dependencies:</strong></p>
+<pre><code class="language-json">{
+  &quot;dependencies&quot;: {
+    &quot;express&quot;: &quot;^4.18.0&quot;,
+    &quot;typescript&quot;: &quot;^5.0.0&quot;,
+    &quot;@types/express&quot;: &quot;^4.17.0&quot;,
+    &quot;zod&quot;: &quot;^3.0.0&quot;,
+    &quot;winston&quot;: &quot;^3.0.0&quot;,
+    &quot;cors&quot;: &quot;^2.8.0&quot;,
+    &quot;helmet&quot;: &quot;^7.0.0&quot;,
+    &quot;dotenv&quot;: &quot;^16.0.0&quot;
+  }
+}
+</code></pre>
+<h3 id="supabase-integration">Supabase Integration</h3>
+<ul>
+<li>PostgreSQL database</li>
+<li>Row Level Security (RLS)</li>
+<li>Auth</li>
+<li>Storage</li>
+<li>Real-time subscriptions</li>
+</ul>
+<p><strong>Key Features:</strong></p>
+<pre><code class="language-typescript">// Supabase client setup
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_ANON_KEY!
+)
+</code></pre>
+<h3 id="redis-stack">Redis Stack</h3>
+<ul>
+<li>Caching</li>
+<li>Session storage</li>
+<li>Rate limiting</li>
+<li>Job queues</li>
+</ul>
+<p><strong>Key Dependencies:</strong></p>
+<pre><code class="language-json">{
+  &quot;dependencies&quot;: {
+    &quot;ioredis&quot;: &quot;^5.0.0&quot;,
+    &quot;rate-limiter-flexible&quot;: &quot;^3.0.0&quot;,
+    &quot;bull&quot;: &quot;^4.0.0&quot;,
+    &quot;@types/bull&quot;: &quot;^4.10.0&quot;
+  }
+}
+</code></pre>
+<h2 id="3-development-tools">3. Development Tools</h2>
+<h3 id="code-quality">Code Quality</h3>
+<ul>
+<li>ESLint</li>
+<li>Prettier</li>
+<li>Husky</li>
+<li>Commitlint</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;devDependencies&quot;: {
+    &quot;eslint&quot;: &quot;^8.0.0&quot;,
+    &quot;prettier&quot;: &quot;^3.0.0&quot;,
+    &quot;husky&quot;: &quot;^8.0.0&quot;,
+    &quot;@commitlint/cli&quot;: &quot;^17.0.0&quot;,
+    &quot;@commitlint/config-conventional&quot;: &quot;^17.0.0&quot;
+  }
+}
+</code></pre>
+<h3 id="testing-stack">Testing Stack</h3>
+<ul>
+<li>Jest</li>
+<li>Supertest</li>
+<li>React Testing Library</li>
+<li>Cypress</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;devDependencies&quot;: {
+    &quot;jest&quot;: &quot;^29.0.0&quot;,
+    &quot;@types/jest&quot;: &quot;^29.0.0&quot;,
+    &quot;supertest&quot;: &quot;^6.0.0&quot;,
+    &quot;@testing-library/react&quot;: &quot;^14.0.0&quot;,
+    &quot;cypress&quot;: &quot;^13.0.0&quot;
+  }
+}
+</code></pre>
+<h2 id="4-data-flow-architecture">4. Data Flow Architecture</h2>
+<h3 id="authentication-flow">Authentication Flow</h3>
+<pre><code class="language-mermaid">sequenceDiagram
+    Client-&gt;&gt;+Next.js: Login Request
+    Next.js-&gt;&gt;+Express: /api/auth/login
+    Express-&gt;&gt;+Supabase: Authenticate
+    Supabase--&gt;&gt;-Express: JWT Token
+    Express-&gt;&gt;Redis: Cache Session
+    Express--&gt;&gt;-Next.js: Auth Response
+    Next.js--&gt;&gt;-Client: Success + Token
+</code></pre>
+<h3 id="data-request-flow">Data Request Flow</h3>
+<pre><code class="language-mermaid">sequenceDiagram
+    Client-&gt;&gt;+Next.js: Data Request
+    Next.js-&gt;&gt;+Express: API Request
+    Express-&gt;&gt;Redis: Check Cache
+    Redis--&gt;&gt;Express: Cache Miss
+    Express-&gt;&gt;+Supabase: Query Data
+    Supabase--&gt;&gt;-Express: Data
+    Express-&gt;&gt;Redis: Cache Data
+    Express--&gt;&gt;-Next.js: Response
+    Next.js--&gt;&gt;-Client: Render Data
+</code></pre>
+<h2 id="5-development-environment-requirements">5. Development Environment Requirements</h2>
+<h3 id="required-tools">Required Tools</h3>
+<ul>
+<li>Node.js (v18+)</li>
+<li>pnpm (v8+)</li>
+<li>Docker &amp; Docker Compose</li>
+<li>Git</li>
+<li>VS Code (recommended)</li>
+</ul>
+<h3 id="vs-code-extensions">VS Code Extensions</h3>
+<ul>
+<li>ESLint</li>
+<li>Prettier</li>
+<li>Docker</li>
+<li>GitLens</li>
+<li>REST Client</li>
+</ul>
+<h3 id="environment-variables-structure">Environment Variables Structure</h3>
+<pre><code class="language-bash"># Frontend (.env.local)
+NEXT_PUBLIC_API_URL=http://localhost:3000
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+
+# Backend (.env)
+PORT=3000
+SUPABASE_URL=your-supabase-url
+SUPABASE_SERVICE_KEY=your-service-key
+REDIS_URL=redis://localhost:6379
+NODE_ENV=development
+</code></pre>
+<h2 id="6-communication-protocols">6. Communication Protocols</h2>
+<h3 id="api-standards">API Standards</h3>
+<ul>
+<li>REST API (primary)</li>
+<li>WebSocket (real-time features)</li>
+<li>Server-Sent Events (notifications)</li>
+</ul>
+<h3 id="security-measures">Security Measures</h3>
+<ul>
+<li>CORS configuration</li>
+<li>Rate limiting</li>
+<li>JWT validation</li>
+<li>Input sanitization</li>
+<li>XSS protection</li>
+</ul>
+<h2 id="7-deployment-architecture">7. Deployment Architecture</h2>
+<h3 id="development">Development</h3>
+<ul>
+<li>Local Docker environment</li>
+<li>Supabase local development</li>
+<li>Redis local instance</li>
+</ul>
+<h3 id="production">Production</h3>
+<ul>
+<li>Vercel (Frontend)</li>
+<li>Railway/Fly.io (Backend)</li>
+<li>Supabase (Database/Auth)</li>
+<li>Upstash (Redis)</li>
+<li>GitHub Actions (CI/CD)</li>
+</ul>
+<h2 id="questions-to-answer-before-development">Questions to Answer Before Development:</h2>
+<ol>
+<li><strong>Frontend</strong></li>
+<li>Do we need SSR for all pages?</li>
+<li>Which pages need real-time updates?</li>
+<li>
+<p>Mobile-first or desktop-first design?</p>
+</li>
+<li>
+<p><strong>Backend</strong></p>
+</li>
+<li>Expected request volume?</li>
+<li>Caching strategy preferences?</li>
+<li>
+<p>Rate limiting thresholds?</p>
+</li>
+<li>
+<p><strong>Database</strong></p>
+</li>
+<li>Expected data volume?</li>
+<li>Backup strategy?</li>
+<li>
+<p>Data retention policy?</p>
+</li>
+<li>
+<p><strong>Authentication</strong></p>
+</li>
+<li>Required OAuth providers?</li>
+<li>Session duration?</li>
+<li>
+<p>Password policies?</p>
+</li>
+<li>
+<p><strong>Infrastructure</strong></p>
+</li>
+<li>Expected user load?</li>
+<li>Geographic distribution?</li>
+<li>Budget constraints? </li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../BACKEND_ARCHITECTURE/" class="btn btn-neutral float-right" title="Архитектура backend">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="../BACKEND_ARCHITECTURE/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Velvet Secrets Online Shop Docs</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u041a\u0440\u0430\u0442\u043a\u043e\u0435 \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u043f\u0440\u043e\u0435\u043a\u0442\u0430 \u0434\u043b\u044f backend-\u043a\u043e\u043c\u0430\u043d\u0434\u044b";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> Velvet Secrets Online Shop Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="README.md">Главная</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="TECH_STACK/">Технический стек</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Архитектура</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="BACKEND_ARCHITECTURE/">Архитектура backend</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="SAAS_EXPRESS_ARCHITECTURE/">Архитектура SaaS/Express</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="ADVANCED_ARCHITECTURE/">Расширенная архитектура</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="DATABASE_STRUCTURE/">Структура базы данных</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="PROJECT_STRUCTURE/">Структура проекта</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Дорожные карты</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="MVP_ROADMAP/">Дорожная карта MVP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="IMPLEMENTATION_ROADMAP/">Дорожная карта реализации</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Разработка</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="DEVELOPMENT_TRACKER/">Трекер разработки</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="FRONTEND_STATUS/">Frontend статус</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">Velvet Secrets Online Shop Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Краткое описание проекта для backend-команды</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="backend-">Краткое описание проекта для backend-команды</h1>
+<p><strong>Проект</strong> — SaaS-платформа для управления проектами, ролями, правилами, промптами и чатами, с поддержкой многоарендности, публичного шаринга промптов и строгой безопасности.</p>
+<h2 id="_1">Архитектура</h2>
+<ul>
+<li><strong>Frontend:</strong> Next.js (TypeScript, Tailwind, Zustand, React Query, shadcn/ui)</li>
+<li><strong>Backend:</strong> Express.js (TypeScript), Supabase (PostgreSQL, Auth, Storage, RLS), Redis (кэш, очереди Bull)</li>
+<li><strong>CI/CD:</strong> GitHub Actions, Docker, Vercel (frontend), Railway/Fly.io (backend)</li>
+</ul>
+<h2 id="_2">Ключевые сущности</h2>
+<ul>
+<li>Пользователи, организации, проекты</li>
+<li>Роли, правила, промпты (в т.ч. публичные), чаты, сообщения чата</li>
+<li>Поддержка RBAC, RLS, аудита</li>
+</ul>
+<h2 id="_3">Особенности</h2>
+<ul>
+<li>Многоарендная архитектура (multi-tenant, RLS)</li>
+<li>Публичный шаринг промптов по ссылке (<code>is_public</code>, <code>public_id</code>)</li>
+<li>REST API (версионирование, OpenAPI), валидация через Zod</li>
+<li>Кэширование и очереди через Redis/Bull</li>
+<li>Логирование (Winston), мониторинг (Sentry, Prometheus, Grafana)</li>
+<li>Тестирование: Jest, Cypress, React Testing Library</li>
+</ul>
+<h2 id="_4">Безопасность</h2>
+<ul>
+<li>RLS на уровне БД (Supabase)</li>
+<li>Rate limiting, CORS, JWT, audit logging</li>
+<li>Политики доступа: приватные данные — только участникам, публичные промпты — всем по ссылке</li>
+</ul>
+<h2 id="_5">Для старта</h2>
+<ul>
+<li>Ознакомьтесь с <a href="DATABASE_STRUCTURE/">DATABASE_STRUCTURE.md</a> (структура и RLS)</li>
+<li>Смотрите <a href="SAAS_EXPRESS_ARCHITECTURE/">SAAS_EXPRESS_ARCHITECTURE.md</a> и <a href="BACKEND_ARCHITECTURE/">BACKEND_ARCHITECTURE.md</a> для деталей API и инфраструктуры</li>
+<li>Организации нужны для развертывания собственного LLM локально на серверах для личного использования в пределах организаций</li>
+</ul>
+<hr />
+<h2 id="_6">Быстрые ссылки на документацию</h2>
+<ul>
+<li><a href="DATABASE_STRUCTURE/">Структура базы данных</a></li>
+<li><a href="BACKEND_ARCHITECTURE/">Архитектура backend</a></li>
+<li><a href="SAAS_EXPRESS_ARCHITECTURE/">Архитектура SaaS/Express</a></li>
+<li><a href="TECH_STACK/">Технический стек</a></li>
+<li><a href="PROJECT_STRUCTURE/">Структура проекта</a></li>
+<li><a href="MVP_ROADMAP/">Дорожная карта MVP</a></li>
+<li><a href="IMPLEMENTATION_ROADMAP/">Дорожная карта реализации</a></li>
+<li><a href="DEVELOPMENT_TRACKER/">Трекер разработки</a></li>
+<li><a href="FRONTEND_STATUS/">Frontend статус</a></li>
+<li><a href="ADVANCED_ARCHITECTURE/">Расширенная архитектура</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2025-05-18 14:17:34.190159+00:00
+-->

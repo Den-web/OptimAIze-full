@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Расширенная архитектура - Velvet Secrets Online Shop Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u0420\u0430\u0441\u0448\u0438\u0440\u0435\u043d\u043d\u0430\u044f \u0430\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430";
+        var mkdocs_page_input_path = "ADVANCED_ARCHITECTURE.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Velvet Secrets Online Shop Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../README.md">Главная</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../TECH_STACK/">Технический стек</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Архитектура</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../BACKEND_ARCHITECTURE/">Архитектура backend</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SAAS_EXPRESS_ARCHITECTURE/">Архитектура SaaS/Express</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Расширенная архитектура</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-microservices-breakdown">1. Microservices Breakdown</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-advanced-performance-optimizations">2. Advanced Performance Optimizations</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#database-optimization">Database Optimization</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#caching-strategy">Caching Strategy</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-scalability-patterns">3. Scalability Patterns</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#load-balancing">Load Balancing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#circuit-breaker-pattern">Circuit Breaker Pattern</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-advanced-monitoring">4. Advanced Monitoring</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#metrics-collection">Metrics Collection</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#advanced-logging">Advanced Logging</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-security-enhancements">5. Security Enhancements</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#api-security">API Security</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#data-protection">Data Protection</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6-disaster-recovery">6. Disaster Recovery</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#backup-strategy">Backup Strategy</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#recovery-procedures">Recovery Procedures</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#7-development-workflow">7. Development Workflow</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#feature-flags">Feature Flags</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cicd-pipeline">CI/CD Pipeline</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#8-performance-testing">8. Performance Testing</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#load-testing-configuration">Load Testing Configuration</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#9-next-steps">9. Next Steps</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../DATABASE_STRUCTURE/">Структура базы данных</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PROJECT_STRUCTURE/">Структура проекта</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Дорожные карты</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../MVP_ROADMAP/">Дорожная карта MVP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../IMPLEMENTATION_ROADMAP/">Дорожная карта реализации</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Разработка</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../DEVELOPMENT_TRACKER/">Трекер разработки</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../FRONTEND_STATUS/">Frontend статус</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Velvet Secrets Online Shop Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Архитектура</li>
+      <li class="breadcrumb-item active">Расширенная архитектура</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="advanced-architecture-considerations">Advanced Architecture Considerations</h1>
+<h2 id="1-microservices-breakdown">1. Microservices Breakdown</h2>
+<pre><code class="language-mermaid">graph TD
+    Gateway[API Gateway]
+    Auth[Auth Service]
+    User[User Service]
+    Org[Organization Service]
+    Notify[Notification Service]
+    Analytics[Analytics Service]
+
+    Gateway --&gt; Auth
+    Gateway --&gt; User
+    Gateway --&gt; Org
+    Gateway --&gt; Notify
+    Gateway --&gt; Analytics
+
+    subgraph Data Stores
+        AuthDB[(Auth DB)]
+        UserDB[(User DB)]
+        AnalyticsDB[(Analytics DB)]
+    end
+
+    Auth --&gt; AuthDB
+    User --&gt; UserDB
+    Analytics --&gt; AnalyticsDB
+</code></pre>
+<h2 id="2-advanced-performance-optimizations">2. Advanced Performance Optimizations</h2>
+<h3 id="database-optimization">Database Optimization</h3>
+<pre><code class="language-sql">-- Materialized Views for Analytics
+CREATE MATERIALIZED VIEW user_activity_summary AS
+SELECT 
+    user_id,
+    COUNT(*) as total_actions,
+    COUNT(DISTINCT date_trunc('day', created_at)) as active_days
+FROM user_actions
+GROUP BY user_id;
+
+-- Partitioning Strategy
+CREATE TABLE events (
+    id uuid DEFAULT gen_random_uuid(),
+    created_at timestamptz NOT NULL,
+    event_type text NOT NULL,
+    payload jsonb
+) PARTITION BY RANGE (created_at);
+
+-- Create Monthly Partitions
+CREATE TABLE events_y2024m01 PARTITION OF events
+    FOR VALUES FROM ('2024-01-01') TO ('2024-02-01');
+</code></pre>
+<h3 id="caching-strategy">Caching Strategy</h3>
+<pre><code class="language-typescript">// Multi-level caching
+interface CacheConfig {
+  memory: {
+    max: number;
+    ttl: number;
+  };
+  redis: {
+    ttl: number;
+    patterns: string[];
+  };
+  cdn: {
+    paths: string[];
+    ttl: number;
+  };
+}
+
+const cacheConfig: CacheConfig = {
+  memory: {
+    max: 1000,
+    ttl: 60 // 1 minute
+  },
+  redis: {
+    ttl: 3600, // 1 hour
+    patterns: [
+      'user:*',
+      'org:*',
+      'project:*'
+    ]
+  },
+  cdn: {
+    paths: [
+      '/api/public/*',
+      '/api/static/*'
+    ],
+    ttl: 86400 // 24 hours
+  }
+};
+</code></pre>
+<h2 id="3-scalability-patterns">3. Scalability Patterns</h2>
+<h3 id="load-balancing">Load Balancing</h3>
+<pre><code class="language-typescript">// Load Balancer Configuration
+interface LoadBalancerConfig {
+  algorithm: 'round-robin' | 'least-connections' | 'ip-hash';
+  healthCheck: {
+    path: string;
+    interval: number;
+    timeout: number;
+    unhealthyThreshold: number;
+  };
+  ssl: {
+    enabled: boolean;
+    cert: string;
+    key: string;
+  };
+}
+
+const loadBalancerConfig: LoadBalancerConfig = {
+  algorithm: 'least-connections',
+  healthCheck: {
+    path: '/health',
+    interval: 30,
+    timeout: 5,
+    unhealthyThreshold: 3
+  },
+  ssl: {
+    enabled: true,
+    cert: process.env.SSL_CERT!,
+    key: process.env.SSL_KEY!
+  }
+};
+</code></pre>
+<h3 id="circuit-breaker-pattern">Circuit Breaker Pattern</h3>
+<pre><code class="language-typescript">interface CircuitBreakerConfig {
+  failureThreshold: number;
+  resetTimeout: number;
+  monitoredEndpoints: string[];
+}
+
+class CircuitBreaker {
+  private state: 'CLOSED' | 'OPEN' | 'HALF_OPEN' = 'CLOSED';
+  private failures = 0;
+  private lastFailureTime?: Date;
+
+  constructor(private config: CircuitBreakerConfig) {}
+
+  async execute&lt;T&gt;(command: () =&gt; Promise&lt;T&gt;): Promise&lt;T&gt; {
+    if (this.state === 'OPEN') {
+      if (this.shouldReset()) {
+        this.state = 'HALF_OPEN';
+      } else {
+        throw new Error('Circuit breaker is OPEN');
+      }
+    }
+
+    try {
+      const result = await command();
+      this.onSuccess();
+      return result;
+    } catch (error) {
+      this.onFailure();
+      throw error;
+    }
+  }
+
+  private shouldReset(): boolean {
+    if (!this.lastFailureTime) return false;
+    return Date.now() - this.lastFailureTime.getTime() &gt; this.config.resetTimeout;
+  }
+}
+</code></pre>
+<h2 id="4-advanced-monitoring">4. Advanced Monitoring</h2>
+<h3 id="metrics-collection">Metrics Collection</h3>
+<pre><code class="language-typescript">interface MetricsCollector {
+  // Business Metrics
+  trackUserActivity(userId: string, action: string): void;
+  trackSubscriptionStatus(orgId: string, status: string): void;
+
+  // Technical Metrics
+  recordApiLatency(endpoint: string, duration: number): void;
+  recordDatabaseQuery(query: string, duration: number): void;
+  recordCacheHit(key: string): void;
+  recordCacheMiss(key: string): void;
+}
+
+// Prometheus Integration
+const metrics = new PrometheusMetrics({
+  prefix: 'app_',
+  defaultLabels: {
+    environment: process.env.NODE_ENV
+  }
+});
+
+// Custom metrics
+const httpRequestDuration = metrics.createHistogram({
+  name: 'http_request_duration_seconds',
+  help: 'Duration of HTTP requests in seconds',
+  labelNames: ['method', 'route', 'status_code']
+});
+</code></pre>
+<h3 id="advanced-logging">Advanced Logging</h3>
+<pre><code class="language-typescript">interface LogEntry {
+  timestamp: string;
+  level: 'debug' | 'info' | 'warn' | 'error';
+  context: {
+    requestId: string;
+    userId?: string;
+    orgId?: string;
+    environment: string;
+    version: string;
+  };
+  message: string;
+  metadata: Record&lt;string, unknown&gt;;
+  tags: string[];
+  trace?: {
+    id: string;
+    spanId: string;
+    parentId?: string;
+  };
+}
+
+// Structured logging with correlation
+const logger = createLogger({
+  format: combine(
+    timestamp(),
+    correlationId(),
+    json()
+  ),
+  transports: [
+    new ElasticsearchTransport({
+      level: 'info',
+      clientOpts: { node: process.env.ELASTICSEARCH_URL }
+    }),
+    new CloudWatchTransport({
+      level: 'error',
+      logGroupName: '/production/api'
+    })
+  ]
+});
+</code></pre>
+<h2 id="5-security-enhancements">5. Security Enhancements</h2>
+<h3 id="api-security">API Security</h3>
+<pre><code class="language-typescript">// Rate Limiting with Dynamic Thresholds
+interface RateLimitConfig {
+  basic: {
+    points: number;
+    duration: number;
+  };
+  authenticated: {
+    points: number;
+    duration: number;
+  };
+  premium: {
+    points: number;
+    duration: number;
+  };
+}
+
+// JWT with Refresh Token Rotation
+interface TokenPair {
+  accessToken: string;
+  refreshToken: string;
+  expiresIn: number;
+}
+
+class TokenManager {
+  async rotateRefreshToken(oldRefreshToken: string): Promise&lt;TokenPair&gt; {
+    // Validate old refresh token
+    // Generate new token pair
+    // Invalidate old refresh token
+    // Return new pair
+  }
+}
+</code></pre>
+<h3 id="data-protection">Data Protection</h3>
+<pre><code class="language-typescript">// Field-level Encryption
+interface EncryptionConfig {
+  algorithm: string;
+  keyRotationPeriod: number;
+  fields: {
+    [table: string]: string[];
+  };
+}
+
+// Data Masking
+const maskingRules = {
+  email: (value: string) =&gt; value.replace(/(?&lt;=.{3}).(?=.*@)/g, '*'),
+  phone: (value: string) =&gt; value.replace(/\d(?=\d{4})/g, '*'),
+  ssn: (value: string) =&gt; `***-**-${value.slice(-4)}`
+};
+</code></pre>
+<h2 id="6-disaster-recovery">6. Disaster Recovery</h2>
+<h3 id="backup-strategy">Backup Strategy</h3>
+<pre><code class="language-yaml"># Backup Configuration
+backups:
+  database:
+    full:
+      frequency: &quot;0 0 * * *&quot;  # Daily
+      retention: 30d
+    incremental:
+      frequency: &quot;0 */6 * * *&quot;  # Every 6 hours
+      retention: 7d
+
+  files:
+    frequency: &quot;0 0 * * 0&quot;  # Weekly
+    retention: 90d
+
+  configurations:
+    frequency: &quot;0 0 * * *&quot;  # Daily
+    retention: 14d
+</code></pre>
+<h3 id="recovery-procedures">Recovery Procedures</h3>
+<pre><code class="language-typescript">interface RecoveryPlan {
+  priority: number;
+  service: string;
+  dependencies: string[];
+  estimatedDowntime: number;
+  steps: RecoveryStep[];
+}
+
+interface RecoveryStep {
+  order: number;
+  description: string;
+  command: string;
+  rollback: string;
+  validation: () =&gt; Promise&lt;boolean&gt;;
+}
+</code></pre>
+<h2 id="7-development-workflow">7. Development Workflow</h2>
+<h3 id="feature-flags">Feature Flags</h3>
+<pre><code class="language-typescript">interface FeatureFlag {
+  name: string;
+  description: string;
+  enabled: boolean;
+  conditions?: {
+    userPercentage?: number;
+    userIds?: string[];
+    orgIds?: string[];
+    environments?: string[];
+  };
+}
+
+const featureFlags: FeatureFlag[] = [
+  {
+    name: 'new-dashboard',
+    description: 'New dashboard UI',
+    enabled: true,
+    conditions: {
+      userPercentage: 20,
+      environments: ['staging', 'production']
+    }
+  }
+];
+</code></pre>
+<h3 id="cicd-pipeline">CI/CD Pipeline</h3>
+<pre><code class="language-yaml"># Advanced CI/CD with Canary Deployments
+name: Production Deployment
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Tests
+        run: |
+          pnpm test
+          pnpm test:e2e
+          pnpm test:integration
+
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Security Scan
+        uses: snyk/actions/node@master
+
+  deploy-canary:
+    needs: [test, security]
+    steps:
+      - name: Deploy Canary
+        run: |
+          # Deploy to 10% of production servers
+          # Monitor error rates
+          # Monitor performance metrics
+
+  deploy-full:
+    needs: deploy-canary
+    steps:
+      - name: Full Deployment
+        run: |
+          # Deploy to remaining servers
+          # Verify deployment
+          # Run smoke tests
+</code></pre>
+<h2 id="8-performance-testing">8. Performance Testing</h2>
+<h3 id="load-testing-configuration">Load Testing Configuration</h3>
+<pre><code class="language-typescript">interface LoadTestConfig {
+  scenarios: {
+    name: string;
+    flow: TestStep[];
+    users: number;
+    rampUpTime: number;
+    duration: number;
+  }[];
+  thresholds: {
+    http_req_duration: string;
+    http_req_failed: string;
+  };
+}
+
+const loadTest: LoadTestConfig = {
+  scenarios: [
+    {
+      name: 'API Endpoints',
+      flow: [
+        { name: 'Home', endpoint: '/' },
+        { name: 'Login', endpoint: '/api/auth/login' },
+        { name: 'Dashboard', endpoint: '/api/dashboard' }
+      ],
+      users: 1000,
+      rampUpTime: 60,
+      duration: 300
+    }
+  ],
+  thresholds: {
+    http_req_duration: 'p95&lt;500',
+    http_req_failed: 'rate&lt;0.01'
+  }
+};
+</code></pre>
+<h2 id="9-next-steps">9. Next Steps</h2>
+<ol>
+<li><strong>Infrastructure Setup</strong></li>
+<li>Set up monitoring stack (ELK/Prometheus/Grafana)</li>
+<li>Configure CI/CD pipelines</li>
+<li>
+<p>Set up staging environment</p>
+</li>
+<li>
+<p><strong>Security Implementation</strong></p>
+</li>
+<li>Implement API security measures</li>
+<li>Set up audit logging</li>
+<li>
+<p>Configure backup systems</p>
+</li>
+<li>
+<p><strong>Performance Optimization</strong></p>
+</li>
+<li>Implement caching strategy</li>
+<li>Set up load balancing</li>
+<li>
+<p>Configure database optimizations</p>
+</li>
+<li>
+<p><strong>Development Process</strong></p>
+</li>
+<li>Set up feature flags system</li>
+<li>Configure automated testing</li>
+<li>Implement logging system </li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../SAAS_EXPRESS_ARCHITECTURE/" class="btn btn-neutral float-left" title="Архитектура SaaS/Express"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../DATABASE_STRUCTURE/" class="btn btn-neutral float-right" title="Структура базы данных">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../SAAS_EXPRESS_ARCHITECTURE/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../DATABASE_STRUCTURE/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

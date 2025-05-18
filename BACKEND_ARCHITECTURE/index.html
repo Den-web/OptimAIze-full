@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Архитектура backend - Velvet Secrets Online Shop Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u0410\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430 backend";
+        var mkdocs_page_input_path = "BACKEND_ARCHITECTURE.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Velvet Secrets Online Shop Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../README.md">Главная</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../TECH_STACK/">Технический стек</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Архитектура</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Архитектура backend</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#system-architecture">System Architecture</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-database-architecture">1. Database Architecture</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#primary-database-postgresql">Primary Database (PostgreSQL)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#database-strategy">Database Strategy</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-authentication-authorization">2. Authentication &amp; Authorization</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#auth-stack">Auth Stack</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-api-architecture">3. API Architecture</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#api-design">API Design</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#api-implementation">API Implementation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-infrastructure-setup">4. Infrastructure Setup</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#production-environment">Production Environment</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#scaling-strategy">Scaling Strategy</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-background-processing">5. Background Processing</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#job-queue-system">Job Queue System</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#scheduled-tasks">Scheduled Tasks</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6-monitoring-observability">6. Monitoring &amp; Observability</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#monitoring-stack">Monitoring Stack</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#7-development-workflow">7. Development Workflow</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#local-development">Local Development</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cicd-pipeline">CI/CD Pipeline</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#8-security-measures">8. Security Measures</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#security-implementation">Security Implementation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#9-performance-optimization">9. Performance Optimization</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#database-optimization">Database Optimization</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#10-immediate-implementation-plan">10. Immediate Implementation Plan</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SAAS_EXPRESS_ARCHITECTURE/">Архитектура SaaS/Express</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ADVANCED_ARCHITECTURE/">Расширенная архитектура</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../DATABASE_STRUCTURE/">Структура базы данных</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PROJECT_STRUCTURE/">Структура проекта</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Дорожные карты</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../MVP_ROADMAP/">Дорожная карта MVP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../IMPLEMENTATION_ROADMAP/">Дорожная карта реализации</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Разработка</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../DEVELOPMENT_TRACKER/">Трекер разработки</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../FRONTEND_STATUS/">Frontend статус</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Velvet Secrets Online Shop Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Архитектура</li>
+      <li class="breadcrumb-item active">Архитектура backend</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="backend-architecture-infrastructure-design">Backend Architecture &amp; Infrastructure Design</h1>
+<h2 id="system-architecture">System Architecture</h2>
+<pre><code class="language-mermaid">graph TD
+    Client[Next.js Frontend] --&gt; API[API Gateway/BFF]
+    API --&gt; Auth[Auth Service]
+    API --&gt; Core[Core Service]
+    API --&gt; Search[Search Service]
+    Auth --&gt; AuthDB[(Auth DB)]
+    Core --&gt; MainDB[(Main DB)]
+    Core --&gt; Cache[(Redis Cache)]
+    Search --&gt; SearchDB[(Search DB)]
+    Core --&gt; Queue[(Message Queue)]
+    Queue --&gt; Workers[Background Workers]
+</code></pre>
+<h2 id="1-database-architecture">1. Database Architecture</h2>
+<h3 id="primary-database-postgresql">Primary Database (PostgreSQL)</h3>
+<pre><code class="language-sql">-- Key schemas
+CREATE SCHEMA auth;
+CREATE SCHEMA core;
+CREATE SCHEMA analytics;
+
+-- Example core tables
+CREATE TABLE core.users (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    email VARCHAR(255) UNIQUE NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE core.organizations (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    name VARCHAR(255) NOT NULL,
+    subscription_tier VARCHAR(50) NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE core.projects (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    org_id UUID REFERENCES core.organizations(id),
+    name VARCHAR(255) NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+</code></pre>
+<h3 id="database-strategy">Database Strategy</h3>
+<ol>
+<li><strong>Multi-tenant Architecture</strong></li>
+<li>Row-level security (RLS)</li>
+<li>Tenant isolation</li>
+<li>
+<p>Connection pooling (pgBouncer)</p>
+</li>
+<li>
+<p><strong>Performance</strong></p>
+</li>
+<li>Materialized views for analytics</li>
+<li>Partitioning for large tables</li>
+<li>
+<p>Proper indexing strategy</p>
+</li>
+<li>
+<p><strong>High Availability</strong></p>
+</li>
+<li>Primary-replica setup</li>
+<li>Automated failover</li>
+<li>Regular backups</li>
+</ol>
+<h2 id="2-authentication-authorization">2. Authentication &amp; Authorization</h2>
+<h3 id="auth-stack">Auth Stack</h3>
+<ol>
+<li><strong>Identity Provider</strong></li>
+<li>Supabase Auth</li>
+<li>JWT-based authentication</li>
+<li>
+<p>OAuth2.0 providers support</p>
+</li>
+<li>
+<p><strong>Permission System</strong></p>
+</li>
+</ol>
+<pre><code class="language-typescript">// Role-based access control (RBAC)
+type Permission = {
+  action: 'create' | 'read' | 'update' | 'delete';
+  resource: string;
+  conditions?: Record&lt;string, any&gt;;
+};
+
+type Role = {
+  id: string;
+  name: string;
+  permissions: Permission[];
+};
+
+// Usage with organizations
+type OrganizationRole = Role &amp; {
+  orgId: string;
+  scope: 'org' | 'project' | 'team';
+};
+</code></pre>
+<ol>
+<li><strong>Security Measures</strong></li>
+<li>Rate limiting</li>
+<li>CORS configuration</li>
+<li>Security headers</li>
+<li>API key rotation</li>
+<li>Audit logging</li>
+</ol>
+<h2 id="3-api-architecture">3. API Architecture</h2>
+<h3 id="api-design">API Design</h3>
+<pre><code class="language-typescript">// Base API response structure
+interface ApiResponse&lt;T&gt; {
+  data?: T;
+  error?: {
+    code: string;
+    message: string;
+    details?: unknown;
+  };
+  meta?: {
+    page?: number;
+    limit?: number;
+    total?: number;
+  };
+}
+
+// API versioning strategy
+/api/v1/* // Current stable
+/api/v2/* // Beta features
+</code></pre>
+<h3 id="api-implementation">API Implementation</h3>
+<ol>
+<li><strong>REST API Guidelines</strong></li>
+<li>Resource-oriented design</li>
+<li>Proper HTTP methods usage</li>
+<li>Consistent error handling</li>
+<li>
+<p>Rate limiting per route</p>
+</li>
+<li>
+<p><strong>GraphQL API (Optional)</strong></p>
+</li>
+<li>Type-safe schema</li>
+<li>Batched queries</li>
+<li>Real-time subscriptions</li>
+</ol>
+<h2 id="4-infrastructure-setup">4. Infrastructure Setup</h2>
+<h3 id="production-environment">Production Environment</h3>
+<pre><code class="language-yaml"># Docker Compose example
+version: '3.8'
+services:
+  api:
+    build: ./api
+    environment:
+      NODE_ENV: production
+      DB_URL: ${DB_URL}
+    deploy:
+      replicas: 3
+
+  db:
+    image: postgres:15
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+
+  redis:
+    image: redis:7
+    volumes:
+      - redis_data:/data
+
+  search:
+    image: opensearch:latest
+    volumes:
+      - search_data:/usr/share/opensearch/data
+
+volumes:
+  pg_data:
+  redis_data:
+  search_data:
+</code></pre>
+<h3 id="scaling-strategy">Scaling Strategy</h3>
+<ol>
+<li><strong>Horizontal Scaling</strong></li>
+<li>Stateless API servers</li>
+<li>Load balancing</li>
+<li>
+<p>Session management in Redis</p>
+</li>
+<li>
+<p><strong>Caching Strategy</strong></p>
+</li>
+<li>Redis for session/data caching</li>
+<li>CDN for static assets</li>
+<li>Query caching</li>
+</ol>
+<h2 id="5-background-processing">5. Background Processing</h2>
+<h3 id="job-queue-system">Job Queue System</h3>
+<pre><code class="language-typescript">// Bull Queue setup
+interface JobData {
+  userId: string;
+  taskType: string;
+  payload: Record&lt;string, unknown&gt;;
+}
+
+const queue = new Bull&lt;JobData&gt;('processing-queue', {
+  redis: process.env.REDIS_URL,
+  defaultJobOptions: {
+    attempts: 3,
+    backoff: {
+      type: 'exponential',
+      delay: 1000,
+    },
+  },
+});
+</code></pre>
+<h3 id="scheduled-tasks">Scheduled Tasks</h3>
+<ol>
+<li><strong>Maintenance Tasks</strong></li>
+<li>Database cleanup</li>
+<li>Cache invalidation</li>
+<li>
+<p>Analytics aggregation</p>
+</li>
+<li>
+<p><strong>Business Logic Tasks</strong></p>
+</li>
+<li>Email notifications</li>
+<li>Report generation</li>
+<li>Data synchronization</li>
+</ol>
+<h2 id="6-monitoring-observability">6. Monitoring &amp; Observability</h2>
+<h3 id="monitoring-stack">Monitoring Stack</h3>
+<ol>
+<li><strong>Application Monitoring</strong></li>
+<li>Sentry for error tracking</li>
+<li>DataDog for APM</li>
+<li>
+<p>Custom metrics collection</p>
+</li>
+<li>
+<p><strong>Infrastructure Monitoring</strong></p>
+</li>
+<li>Resource utilization</li>
+<li>Service health checks</li>
+<li>
+<p>Performance metrics</p>
+</li>
+<li>
+<p><strong>Logging Strategy</strong></p>
+</li>
+</ol>
+<pre><code class="language-typescript">// Structured logging
+interface LogEntry {
+  level: 'info' | 'warn' | 'error';
+  message: string;
+  timestamp: string;
+  traceId: string;
+  context: Record&lt;string, unknown&gt;;
+}
+</code></pre>
+<h2 id="7-development-workflow">7. Development Workflow</h2>
+<h3 id="local-development">Local Development</h3>
+<pre><code class="language-bash"># Development commands
+pnpm dev        # Start development server
+pnpm test       # Run tests
+pnpm migrate    # Run database migrations
+pnpm seed       # Seed development data
+</code></pre>
+<h3 id="cicd-pipeline">CI/CD Pipeline</h3>
+<pre><code class="language-yaml"># Backend CI/CD
+name: Backend CI/CD
+on:
+  push:
+    branches: [main, staging]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+      - run: pnpm install
+      - run: pnpm test
+      - run: pnpm lint
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to production
+        run: |
+          # Deploy steps here
+</code></pre>
+<h2 id="8-security-measures">8. Security Measures</h2>
+<h3 id="security-implementation">Security Implementation</h3>
+<ol>
+<li><strong>API Security</strong></li>
+<li>Request validation (Zod)</li>
+<li>Input sanitization</li>
+<li>SQL injection prevention</li>
+<li>
+<p>XSS protection</p>
+</li>
+<li>
+<p><strong>Data Security</strong></p>
+</li>
+<li>Encryption at rest</li>
+<li>Secure data transmission</li>
+<li>Regular security audits</li>
+</ol>
+<h2 id="9-performance-optimization">9. Performance Optimization</h2>
+<h3 id="database-optimization">Database Optimization</h3>
+<ol>
+<li><strong>Query Optimization</strong></li>
+<li>Proper indexing</li>
+<li>Query analysis</li>
+<li>
+<p>Connection pooling</p>
+</li>
+<li>
+<p><strong>Caching Strategy</strong></p>
+</li>
+<li>Multi-level caching</li>
+<li>Cache invalidation</li>
+<li>Cache warming</li>
+</ol>
+<h2 id="10-immediate-implementation-plan">10. Immediate Implementation Plan</h2>
+<ol>
+<li><strong>Week 1-2: Foundation</strong></li>
+<li>Set up base infrastructure</li>
+<li>Implement authentication</li>
+<li>
+<p>Create core database schema</p>
+</li>
+<li>
+<p><strong>Week 3-4: Core Features</strong></p>
+</li>
+<li>Implement API endpoints</li>
+<li>Set up background jobs</li>
+<li>
+<p>Add monitoring</p>
+</li>
+<li>
+<p><strong>Week 5-6: Optimization</strong></p>
+</li>
+<li>Performance tuning</li>
+<li>Security hardening</li>
+<li>
+<p>Documentation</p>
+</li>
+<li>
+<p><strong>Week 7-8: Testing &amp; Launch</strong></p>
+</li>
+<li>Load testing</li>
+<li>Security audit</li>
+<li>Gradual rollout </li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../TECH_STACK/" class="btn btn-neutral float-left" title="Технический стек"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../SAAS_EXPRESS_ARCHITECTURE/" class="btn btn-neutral float-right" title="Архитектура SaaS/Express">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../TECH_STACK/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../SAAS_EXPRESS_ARCHITECTURE/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

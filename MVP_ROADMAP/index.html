@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Дорожная карта MVP - Velvet Secrets Online Shop Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u0414\u043e\u0440\u043e\u0436\u043d\u0430\u044f \u043a\u0430\u0440\u0442\u0430 MVP";
+        var mkdocs_page_input_path = "MVP_ROADMAP.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Velvet Secrets Online Shop Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../README.md">Главная</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../TECH_STACK/">Технический стек</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Архитектура</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../BACKEND_ARCHITECTURE/">Архитектура backend</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SAAS_EXPRESS_ARCHITECTURE/">Архитектура SaaS/Express</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ADVANCED_ARCHITECTURE/">Расширенная архитектура</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../DATABASE_STRUCTURE/">Структура базы данных</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PROJECT_STRUCTURE/">Структура проекта</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Дорожные карты</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Дорожная карта MVP</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#core-features-for-mvp">Core Features for MVP</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#week-1-foundation-auth">Week 1: Foundation &amp; Auth</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#day-1-2-project-setup">Day 1-2: Project Setup</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#day-3-4-authentication">Day 3-4: Authentication</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#day-5-basic-layout">Day 5: Basic Layout</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#week-2-core-features">Week 2: Core Features</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#day-1-3-dashboard-implementation">Day 1-3: Dashboard Implementation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#day-4-5-api-integration">Day 4-5: API Integration</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#week-3-polish-deploy">Week 3: Polish &amp; Deploy</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#day-1-2-essential-features">Day 1-2: Essential Features</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#day-3-4-performance-testing">Day 3-4: Performance &amp; Testing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#day-5-deployment">Day 5: Deployment</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mvp-tech-stack">MVP Tech Stack</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#frontend-nextjs">Frontend (Next.js)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#backend-express">Backend (Express)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mvp-database-schema">MVP Database Schema</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mvp-api-endpoints">MVP API Endpoints</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mvp-features-checklist">MVP Features Checklist</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#must-have">Must Have ✅</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nice-to-have">Nice to Have 🎯</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#post-mvp">Post-MVP 📋</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#feedback-collection">Feedback Collection</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#success-metrics">Success Metrics</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#quick-deploy">Quick Deploy</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#environment-setup">Environment Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mvp-launch-checklist">MVP Launch Checklist</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../IMPLEMENTATION_ROADMAP/">Дорожная карта реализации</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Разработка</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../DEVELOPMENT_TRACKER/">Трекер разработки</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../FRONTEND_STATUS/">Frontend статус</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Velvet Secrets Online Shop Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Дорожные карты</li>
+      <li class="breadcrumb-item active">Дорожная карта MVP</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="mvp-development-roadmap">MVP Development Roadmap</h1>
+<h2 id="core-features-for-mvp">Core Features for MVP</h2>
+<ol>
+<li>⭐ Basic Authentication</li>
+<li>⭐ User Dashboard</li>
+<li>⭐ Core Functionality</li>
+<li>⭐ Basic Analytics</li>
+</ol>
+<h2 id="week-1-foundation-auth">Week 1: Foundation &amp; Auth</h2>
+<h3 id="day-1-2-project-setup">Day 1-2: Project Setup</h3>
+<ul>
+<li>[ ] Initialize Next.js project</li>
+<li>[ ] Set up Express backend</li>
+<li>[ ] Configure Supabase</li>
+<li>[ ] Basic project structure</li>
+</ul>
+<h3 id="day-3-4-authentication">Day 3-4: Authentication</h3>
+<ul>
+<li>[ ] Supabase Auth setup</li>
+<li>[ ] Login/Register pages</li>
+<li>[ ] Protected routes</li>
+<li>[ ] User profile basics</li>
+</ul>
+<h3 id="day-5-basic-layout">Day 5: Basic Layout</h3>
+<ul>
+<li>[ ] Navigation structure</li>
+<li>[ ] Responsive layout</li>
+<li>[ ] Basic UI components</li>
+</ul>
+<h2 id="week-2-core-features">Week 2: Core Features</h2>
+<h3 id="day-1-3-dashboard-implementation">Day 1-3: Dashboard Implementation</h3>
+<ul>
+<li>[ ] User dashboard layout</li>
+<li>[ ] Key metrics display</li>
+<li>[ ] Basic data visualization</li>
+<li>[ ] Settings page</li>
+</ul>
+<h3 id="day-4-5-api-integration">Day 4-5: API Integration</h3>
+<ul>
+<li>[ ] Core API endpoints</li>
+<li>[ ] Data fetching setup</li>
+<li>[ ] Error handling</li>
+<li>[ ] Loading states</li>
+</ul>
+<h2 id="week-3-polish-deploy">Week 3: Polish &amp; Deploy</h2>
+<h3 id="day-1-2-essential-features">Day 1-2: Essential Features</h3>
+<ul>
+<li>[ ] Search functionality</li>
+<li>[ ] Basic filters</li>
+<li>[ ] Data export</li>
+<li>[ ] User feedback form</li>
+</ul>
+<h3 id="day-3-4-performance-testing">Day 3-4: Performance &amp; Testing</h3>
+<ul>
+<li>[ ] Basic error tracking</li>
+<li>[ ] Performance optimization</li>
+<li>[ ] Critical path testing</li>
+<li>[ ] Bug fixes</li>
+</ul>
+<h3 id="day-5-deployment">Day 5: Deployment</h3>
+<ul>
+<li>[ ] Production deployment</li>
+<li>[ ] Basic monitoring</li>
+<li>[ ] Documentation</li>
+<li>[ ] User guide</li>
+</ul>
+<h2 id="mvp-tech-stack">MVP Tech Stack</h2>
+<h3 id="frontend-nextjs">Frontend (Next.js)</h3>
+<pre><code class="language-typescript">// Essential dependencies only
+{
+  &quot;dependencies&quot;: {
+    &quot;next&quot;: &quot;^14.0.0&quot;,
+    &quot;react&quot;: &quot;^18.0.0&quot;,
+    &quot;react-dom&quot;: &quot;^18.0.0&quot;,
+    &quot;@supabase/auth-helpers-nextjs&quot;: &quot;^0.8.0&quot;,
+    &quot;@tanstack/react-query&quot;: &quot;^5.0.0&quot;,
+    &quot;tailwindcss&quot;: &quot;^3.0.0&quot;,
+    &quot;shadcn-ui&quot;: &quot;^0.1.0&quot;
+  }
+}
+</code></pre>
+<h3 id="backend-express">Backend (Express)</h3>
+<pre><code class="language-typescript">// Minimal backend setup
+{
+  &quot;dependencies&quot;: {
+    &quot;express&quot;: &quot;^4.18.0&quot;,
+    &quot;typescript&quot;: &quot;^5.0.0&quot;,
+    &quot;@supabase/supabase-js&quot;: &quot;^2.0.0&quot;,
+    &quot;cors&quot;: &quot;^2.8.0&quot;,
+    &quot;dotenv&quot;: &quot;^16.0.0&quot;
+  }
+}
+</code></pre>
+<h2 id="mvp-database-schema">MVP Database Schema</h2>
+<pre><code class="language-sql">-- Minimal Supabase schema
+create table public.users (
+  id uuid references auth.users primary key,
+  email text unique,
+  full_name text,
+  created_at timestamptz default now()
+);
+
+create table public.user_data (
+  id uuid default gen_random_uuid() primary key,
+  user_id uuid references public.users(id),
+  data jsonb default '{}'::jsonb,
+  created_at timestamptz default now()
+);
+
+-- Basic RLS policies
+alter table public.users enable row level security;
+alter table public.user_data enable row level security;
+
+create policy &quot;Users can read own data&quot;
+  on public.users for select
+  using (auth.uid() = id);
+
+create policy &quot;Users can manage own data&quot;
+  on public.user_data for all
+  using (auth.uid() = user_id);
+</code></pre>
+<h2 id="mvp-api-endpoints">MVP API Endpoints</h2>
+<pre><code class="language-typescript">// Essential endpoints only
+interface ApiRoutes {
+  auth: {
+    '/api/auth/me': 'GET',
+    '/api/auth/update': 'PUT'
+  },
+  data: {
+    '/api/data': 'GET &amp; POST',
+    '/api/data/:id': 'GET &amp; PUT &amp; DELETE'
+  },
+  user: {
+    '/api/user/settings': 'GET &amp; PUT',
+    '/api/user/feedback': 'POST'
+  }
+}
+</code></pre>
+<h2 id="mvp-features-checklist">MVP Features Checklist</h2>
+<h3 id="must-have">Must Have ✅</h3>
+<ul>
+<li>[ ] User authentication</li>
+<li>[ ] Basic dashboard</li>
+<li>[ ] Data management</li>
+<li>[ ] Settings page</li>
+<li>[ ] Mobile responsive</li>
+</ul>
+<h3 id="nice-to-have">Nice to Have 🎯</h3>
+<ul>
+<li>[ ] Dark mode</li>
+<li>[ ] Data export</li>
+<li>[ ] Basic search</li>
+<li>[ ] Simple analytics</li>
+<li>[ ] User feedback form</li>
+</ul>
+<h3 id="post-mvp">Post-MVP 📋</h3>
+<ul>
+<li>[ ] Advanced features</li>
+<li>[ ] Team collaboration</li>
+<li>[ ] Advanced analytics</li>
+<li>[ ] API documentation</li>
+<li>[ ] Advanced security</li>
+</ul>
+<h2 id="feedback-collection">Feedback Collection</h2>
+<ul>
+<li>In-app feedback form</li>
+<li>Usage analytics</li>
+<li>Error tracking</li>
+<li>User interviews</li>
+<li>Feature requests</li>
+</ul>
+<h2 id="success-metrics">Success Metrics</h2>
+<ol>
+<li>User Engagement</li>
+<li>Daily active users</li>
+<li>Session duration</li>
+<li>
+<p>Core feature usage</p>
+</li>
+<li>
+<p>Performance</p>
+</li>
+<li>Page load time &lt; 2s</li>
+<li>API response &lt; 300ms</li>
+<li>
+<p>Error rate &lt; 1%</p>
+</li>
+<li>
+<p>User Satisfaction</p>
+</li>
+<li>Feedback score</li>
+<li>Feature requests</li>
+<li>Bug reports</li>
+</ol>
+<h2 id="quick-deploy">Quick Deploy</h2>
+<pre><code class="language-bash"># Development
+pnpm install
+pnpm dev
+
+# Production
+pnpm build
+pnpm start
+</code></pre>
+<h2 id="environment-setup">Environment Setup</h2>
+<pre><code class="language-env"># .env.local
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+NEXT_PUBLIC_API_URL=http://localhost:3000
+
+# .env (backend)
+PORT=3000
+SUPABASE_URL=your-supabase-url
+SUPABASE_SERVICE_KEY=your-service-key
+CORS_ORIGIN=http://localhost:3000
+</code></pre>
+<h2 id="mvp-launch-checklist">MVP Launch Checklist</h2>
+<ul>
+<li>[ ] Core features working</li>
+<li>[ ] Basic error handling</li>
+<li>[ ] Mobile responsive</li>
+<li>[ ] Performance acceptable</li>
+<li>[ ] Security basics covered</li>
+<li>[ ] Analytics tracking</li>
+<li>[ ] Feedback system</li>
+<li>[ ] Basic documentation</li>
+<li>[ ] Deployment tested</li>
+<li>[ ] Backup system </li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../PROJECT_STRUCTURE/" class="btn btn-neutral float-left" title="Структура проекта"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../IMPLEMENTATION_ROADMAP/" class="btn btn-neutral float-right" title="Дорожная карта реализации">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../PROJECT_STRUCTURE/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../IMPLEMENTATION_ROADMAP/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Frontend статус - Velvet Secrets Online Shop Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Frontend \u0441\u0442\u0430\u0442\u0443\u0441";
+        var mkdocs_page_input_path = "FRONTEND_STATUS.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Velvet Secrets Online Shop Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../README.md">Главная</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../TECH_STACK/">Технический стек</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Архитектура</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../BACKEND_ARCHITECTURE/">Архитектура backend</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SAAS_EXPRESS_ARCHITECTURE/">Архитектура SaaS/Express</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ADVANCED_ARCHITECTURE/">Расширенная архитектура</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../DATABASE_STRUCTURE/">Структура базы данных</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PROJECT_STRUCTURE/">Структура проекта</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Дорожные карты</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../MVP_ROADMAP/">Дорожная карта MVP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../IMPLEMENTATION_ROADMAP/">Дорожная карта реализации</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Разработка</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../DEVELOPMENT_TRACKER/">Трекер разработки</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Frontend статус</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#current-status">Current Status</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#core-components-status">Core Components Status</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#authentication">Authentication</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#layout-navigation">Layout &amp; Navigation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dashboard">Dashboard</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#user-profile">User Profile</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#priority-tasks-mvp">Priority Tasks (MVP)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#week-1-foundation">Week 1: Foundation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#week-2-features">Week 2: Features</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#week-3-polish">Week 3: Polish</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#required-dependencies">Required Dependencies</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nextjs-configuration">Next.js Configuration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#environment-setup">Environment Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#project-setup-steps">Project Setup Steps</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#component-library-setup-shadcnui">Component Library Setup (shadcn/ui)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Velvet Secrets Online Shop Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Разработка</li>
+      <li class="breadcrumb-item active">Frontend статус</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="frontend-development-status-plan">Frontend Development Status &amp; Plan</h1>
+<h2 id="current-status">Current Status</h2>
+<p>🔴 Not Started | 🟡 In Progress | 🟢 Complete</p>
+<h2 id="core-components-status">Core Components Status</h2>
+<h3 id="authentication">Authentication</h3>
+<ul>
+<li>🔴 Login Page</li>
+<li>🔴 Register Page</li>
+<li>🔴 Password Reset</li>
+<li>🔴 Auth Guards</li>
+<li>🔴 Auth Context/Store</li>
+</ul>
+<h3 id="layout-navigation">Layout &amp; Navigation</h3>
+<ul>
+<li>🔴 Main Layout</li>
+<li>🔴 Navigation Bar</li>
+<li>🔴 Sidebar</li>
+<li>🔴 Mobile Responsive Menu</li>
+<li>🔴 Footer</li>
+</ul>
+<h3 id="dashboard">Dashboard</h3>
+<ul>
+<li>🔴 Dashboard Layout</li>
+<li>🔴 Stats Cards</li>
+<li>🔴 Quick Actions</li>
+<li>🔴 Recent Activity</li>
+<li>🔴 Basic Charts</li>
+</ul>
+<h3 id="user-profile">User Profile</h3>
+<ul>
+<li>🔴 Profile View</li>
+<li>🔴 Settings Page</li>
+<li>🔴 Preferences</li>
+<li>🔴 Account Management</li>
+</ul>
+<h2 id="priority-tasks-mvp">Priority Tasks (MVP)</h2>
+<h3 id="week-1-foundation">Week 1: Foundation</h3>
+<ol>
+<li>
+<p>Project Setup
+   <code>bash
+   pnpm create next-app --typescript
+   pnpm add @supabase/auth-helpers-nextjs @tanstack/react-query
+   pnpm add -D tailwindcss postcss autoprefixer
+   npx tailwindcss init -p</code></p>
+</li>
+<li>
+<p>Essential Components</p>
+</li>
+<li>[ ] Create <code>components/auth/*</code></li>
+<li>[ ] Create <code>components/layout/*</code></li>
+<li>
+<p>[ ] Create <code>components/shared/*</code></p>
+</li>
+<li>
+<p>Core Pages</p>
+</li>
+<li>[ ] <code>app/page.tsx</code> (Landing)</li>
+<li>[ ] <code>app/auth/(routes)/login/page.tsx</code></li>
+<li>[ ] <code>app/auth/(routes)/register/page.tsx</code></li>
+<li>[ ] <code>app/dashboard/page.tsx</code></li>
+</ol>
+<h3 id="week-2-features">Week 2: Features</h3>
+<ol>
+<li>
+<p>Authentication Flow
+   <code>typescript
+   // app/auth/auth-config.ts
+   export const authConfig = {
+     providers: ['google', 'email'],
+     callbacks: {
+       authorized: async ({ auth, request: { nextUrl } }) =&gt; {
+         const isLoggedIn = !!auth?.user
+         const isOnDashboard = nextUrl.pathname.startsWith('/dashboard')
+         if (isOnDashboard) {
+           if (isLoggedIn) return true
+           return false
+         } else if (isLoggedIn) {
+           return Response.redirect(new URL('/dashboard', nextUrl))
+         }
+         return true
+       }
+     }
+   }</code></p>
+</li>
+<li>
+<p>Data Fetching Setup
+   <code>typescript
+   // lib/api.ts
+   export const api = {
+     get: async (url: string) =&gt; {
+       const res = await fetch(url)
+       if (!res.ok) throw new Error('API Error')
+       return res.json()
+     },
+     post: async (url: string, data: any) =&gt; {
+       const res = await fetch(url, {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify(data)
+       })
+       if (!res.ok) throw new Error('API Error')
+       return res.json()
+     }
+   }</code></p>
+</li>
+<li>
+<p>State Management
+   ```typescript
+   // store/user.ts
+   interface UserState {
+     user: User | null
+     setUser: (user: User | null) =&gt; void
+   }</p>
+</li>
+</ol>
+<p>export const useUserStore = create<UserState>((set) =&gt; ({
+     user: null,
+     setUser: (user) =&gt; set({ user })
+   }))
+   ```</p>
+<h3 id="week-3-polish">Week 3: Polish</h3>
+<ol>
+<li>Error Handling</li>
+<li>[ ] Error boundaries</li>
+<li>[ ] Toast notifications</li>
+<li>
+<p>[ ] Form validations</p>
+</li>
+<li>
+<p>Loading States</p>
+</li>
+<li>[ ] Skeleton loaders</li>
+<li>[ ] Progress indicators</li>
+<li>
+<p>[ ] Suspense boundaries</p>
+</li>
+<li>
+<p>Optimization</p>
+</li>
+<li>[ ] Image optimization</li>
+<li>[ ] Route prefetching</li>
+<li>[ ] Component memoization</li>
+</ol>
+<h2 id="required-dependencies">Required Dependencies</h2>
+<pre><code class="language-json">{
+  &quot;dependencies&quot;: {
+    &quot;next&quot;: &quot;14.2.8&quot;,
+    &quot;react&quot;: &quot;^18.2.0&quot;,
+    &quot;react-dom&quot;: &quot;^18.2.0&quot;,
+    &quot;@supabase/auth-helpers-nextjs&quot;: &quot;^0.9.0&quot;,
+    &quot;@tanstack/react-query&quot;: &quot;^5.28.0&quot;,
+    &quot;tailwindcss&quot;: &quot;^3.4.1&quot;,
+    &quot;shadcn-ui&quot;: &quot;^0.8.0&quot;,
+    &quot;zustand&quot;: &quot;^4.5.2&quot;,
+    &quot;zod&quot;: &quot;^3.22.4&quot;,
+    &quot;react-hook-form&quot;: &quot;^7.51.0&quot;,
+    &quot;lucide-react&quot;: &quot;^0.358.0&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;typescript&quot;: &quot;^5.4.2&quot;,
+    &quot;@types/node&quot;: &quot;^20.11.28&quot;,
+    &quot;@types/react&quot;: &quot;^18.2.66&quot;,
+    &quot;@types/react-dom&quot;: &quot;^18.2.22&quot;,
+    &quot;autoprefixer&quot;: &quot;^10.4.18&quot;,
+    &quot;postcss&quot;: &quot;^8.4.35&quot;,
+    &quot;prettier&quot;: &quot;^3.2.5&quot;,
+    &quot;eslint&quot;: &quot;^8.57.0&quot;,
+    &quot;eslint-config-next&quot;: &quot;14.2.8&quot;
+  }
+}
+</code></pre>
+<h2 id="nextjs-configuration">Next.js Configuration</h2>
+<pre><code class="language-typescript">// next.config.mjs
+import { config } from 'process'
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  images: {
+    domains: ['localhost'],
+    // Add other domains as needed
+  },
+  experimental: {
+    serverActions: {
+      allowedOrigins: ['localhost:3000'],
+    },
+  },
+  env: {
+    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  }
+}
+
+export default nextConfig
+</code></pre>
+<h2 id="environment-setup">Environment Setup</h2>
+<pre><code class="language-env"># .env.local
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+NEXT_PUBLIC_API_URL=http://localhost:3000
+</code></pre>
+<h2 id="project-setup-steps">Project Setup Steps</h2>
+<ol>
+<li>Clean Install</li>
+</ol>
+<pre><code class="language-bash"># Remove existing installation if any
+rm -rf .next node_modules pnpm-lock.yaml
+
+# Fresh install with latest versions
+pnpm install
+
+# Run dev server
+pnpm dev
+</code></pre>
+<ol>
+<li>Verify Installation</li>
+</ol>
+<pre><code class="language-bash"># Check Next.js version
+pnpm next --version
+
+# Should output: 14.2.8
+</code></pre>
+<ol>
+<li>Clear Cache if Needed</li>
+</ol>
+<pre><code class="language-bash"># Clear Next.js cache
+pnpm next clear
+rm -rf .next
+
+# Rebuild
+pnpm build
+</code></pre>
+<h2 id="component-library-setup-shadcnui">Component Library Setup (shadcn/ui)</h2>
+<pre><code class="language-bash"># Initialize
+npx shadcn-ui@latest init
+
+# Add essential components
+npx shadcn-ui@latest add button
+npx shadcn-ui@latest add input
+npx shadcn-ui@latest add form
+npx shadcn-ui@latest add card
+npx shadcn-ui@latest add dialog
+</code></pre>
+<h2 id="next-steps">Next Steps</h2>
+<ol>
+<li>Initialize project with the tech stack above</li>
+<li>Set up authentication flow with Supabase</li>
+<li>Create basic layouts and navigation</li>
+<li>Implement dashboard with mock data</li>
+<li>Add user settings and profile</li>
+<li>Polish UI and add loading states</li>
+<li>Optimize and test </li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../DEVELOPMENT_TRACKER/" class="btn btn-neutral float-left" title="Трекер разработки"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../DEVELOPMENT_TRACKER/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

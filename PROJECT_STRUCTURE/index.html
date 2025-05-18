@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Структура проекта - Velvet Secrets Online Shop Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u0421\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430 \u043f\u0440\u043e\u0435\u043a\u0442\u0430";
+        var mkdocs_page_input_path = "PROJECT_STRUCTURE.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Velvet Secrets Online Shop Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../README.md">Главная</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../TECH_STACK/">Технический стек</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Архитектура</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../BACKEND_ARCHITECTURE/">Архитектура backend</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SAAS_EXPRESS_ARCHITECTURE/">Архитектура SaaS/Express</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ADVANCED_ARCHITECTURE/">Расширенная архитектура</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../DATABASE_STRUCTURE/">Структура базы данных</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Структура проекта</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#current-architecture">Current Architecture</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#recommendations-for-production-ready-setup">Recommendations for Production-Ready Setup</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-directory-structure-improvements">1. Directory Structure Improvements</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-essential-production-features-to-add">2. Essential Production Features to Add</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-code-quality-devops">3. Code Quality &amp; DevOps</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-dependencies-to-add">4. Dependencies to Add</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5-immediate-actions">5. Immediate Actions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#6-performance-monitoring">6. Performance Monitoring</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#7-documentation">7. Documentation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Дорожные карты</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../MVP_ROADMAP/">Дорожная карта MVP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../IMPLEMENTATION_ROADMAP/">Дорожная карта реализации</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Разработка</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../DEVELOPMENT_TRACKER/">Трекер разработки</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../FRONTEND_STATUS/">Frontend статус</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Velvet Secrets Online Shop Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Архитектура</li>
+      <li class="breadcrumb-item active">Структура проекта</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="project-structure-analysis-recommendations">Project Structure Analysis &amp; Recommendations</h1>
+<h2 id="current-architecture">Current Architecture</h2>
+<p>The project is a Next.js application with TypeScript, using modern app router and following some React best practices. Here's the current structure:</p>
+<pre><code>optim-ai-ze/
+├── app/                    # Next.js app directory (App Router)
+│   ├── api/               # API routes
+│   ├── dashboard/        # Dashboard pages
+│   ├── globals.css      # Global styles
+│   ├── layout.tsx       # Root layout
+│   └── page.tsx         # Root page
+├── components/           # React components
+│   ├── ui/             # UI components
+│   └── [feature].tsx   # Feature-specific components
+├── context/             # React context providers
+├── hooks/               # Custom React hooks
+├── lib/                 # Utility functions and shared logic
+├── public/             # Static assets
+└── styles/             # Additional styles
+
+Key config files:
+- next.config.mjs
+- tailwind.config.ts
+- tsconfig.json
+- components.json
+</code></pre>
+<h2 id="recommendations-for-production-ready-setup">Recommendations for Production-Ready Setup</h2>
+<h3 id="1-directory-structure-improvements">1. Directory Structure Improvements</h3>
+<pre><code>optim-ai-ze/
+├── src/                    # Move all source code under src/
+│   ├── app/               # Next.js app directory
+│   ├── components/        # React components
+│   │   ├── common/       # Shared components
+│   │   ├── features/     # Feature-specific components
+│   │   └── layouts/      # Layout components
+│   ├── config/           # Configuration files
+│   ├── lib/              # Core utilities
+│   │   ├── api/         # API client/utilities
+│   │   ├── hooks/       # Custom hooks
+│   │   └── utils/       # Helper functions
+│   ├── types/            # TypeScript type definitions
+│   └── styles/           # Global styles
+├── public/               # Static assets
+├── tests/                # Test files
+│   ├── unit/
+│   ├── integration/
+│   └── e2e/
+└── scripts/              # Build/deployment scripts
+</code></pre>
+<h3 id="2-essential-production-features-to-add">2. Essential Production Features to Add</h3>
+<ol>
+<li><strong>Testing Setup</strong></li>
+<li>Add Jest for unit testing</li>
+<li>Add Cypress or Playwright for E2E testing</li>
+<li>
+<p>Implement React Testing Library for component tests</p>
+</li>
+<li>
+<p><strong>State Management</strong></p>
+</li>
+<li>Implement proper state management (React Context is good for small apps)</li>
+<li>
+<p>Consider Zustand or Jotai for larger scale</p>
+</li>
+<li>
+<p><strong>API Layer</strong></p>
+</li>
+<li>Add API route validation (Zod)</li>
+<li>Implement proper error handling</li>
+<li>
+<p>Add API documentation (Swagger/OpenAPI)</p>
+</li>
+<li>
+<p><strong>Performance Optimization</strong></p>
+</li>
+<li>Implement proper code splitting</li>
+<li>Add image optimization</li>
+<li>
+<p>Configure proper caching strategies</p>
+</li>
+<li>
+<p><strong>Security</strong></p>
+</li>
+<li>Add security headers</li>
+<li>Implement proper CORS policies</li>
+<li>Add rate limiting for API routes</li>
+<li>Implement proper authentication flow</li>
+</ol>
+<h3 id="3-code-quality-devops">3. Code Quality &amp; DevOps</h3>
+<ol>
+<li>
+<p><strong>Code Quality</strong>
+   <code>json
+   // Recommended .eslintrc
+   {
+     "extends": [
+       "next/core-web-vitals",
+       "plugin:@typescript-eslint/recommended",
+       "plugin:prettier/recommended"
+     ]
+   }</code></p>
+</li>
+<li>
+<p><strong>Git Workflow</strong></p>
+</li>
+<li>Add proper .gitignore</li>
+<li>Implement Git hooks (husky)</li>
+<li>Add commit message linting (commitlint)</li>
+<li>
+<p>Add PR templates</p>
+</li>
+<li>
+<p><strong>CI/CD Pipeline</strong>
+   <code>yaml
+   # Recommended GitHub Actions workflow
+   name: CI
+   on: [push, pull_request]
+   jobs:
+     test:
+       runs-on: ubuntu-latest
+       steps:
+         - uses: actions/checkout@v3
+         - run: npm ci
+         - run: npm test
+         - run: npm run lint
+         - run: npm run build</code></p>
+</li>
+</ol>
+<h3 id="4-dependencies-to-add">4. Dependencies to Add</h3>
+<pre><code class="language-json">{
+  &quot;devDependencies&quot;: {
+    &quot;@testing-library/react&quot;: &quot;^14.0.0&quot;,
+    &quot;@types/jest&quot;: &quot;^29.0.0&quot;,
+    &quot;cypress&quot;: &quot;^13.0.0&quot;,
+    &quot;husky&quot;: &quot;^8.0.0&quot;,
+    &quot;jest&quot;: &quot;^29.0.0&quot;,
+    &quot;lint-staged&quot;: &quot;^14.0.0&quot;
+  },
+  &quot;dependencies&quot;: {
+    &quot;@tanstack/react-query&quot;: &quot;^5.0.0&quot;,
+    &quot;zod&quot;: &quot;^3.0.0&quot;,
+    &quot;zustand&quot;: &quot;^4.0.0&quot;
+  }
+}
+</code></pre>
+<h3 id="5-immediate-actions">5. Immediate Actions</h3>
+<ol>
+<li>Move all source code under <code>src/</code></li>
+<li>Reorganize components into logical groups</li>
+<li>Add proper TypeScript types</li>
+<li>Set up testing infrastructure</li>
+<li>Implement proper error boundaries</li>
+<li>Add loading states and error handling</li>
+<li>Set up proper logging</li>
+<li>Add monitoring setup (Sentry/LogRocket)</li>
+</ol>
+<h3 id="6-performance-monitoring">6. Performance Monitoring</h3>
+<ol>
+<li>Implement Core Web Vitals monitoring</li>
+<li>Add error tracking</li>
+<li>Set up performance budgets</li>
+<li>Implement proper logging strategy</li>
+</ol>
+<h3 id="7-documentation">7. Documentation</h3>
+<ol>
+<li>Add comprehensive README.md</li>
+<li>Add API documentation</li>
+<li>Add component documentation</li>
+<li>Add deployment documentation</li>
+<li>Add contribution guidelines</li>
+</ol>
+<h2 id="next-steps">Next Steps</h2>
+<ol>
+<li>Implement the directory structure changes</li>
+<li>Set up testing infrastructure</li>
+<li>Add proper error handling and loading states</li>
+<li>Implement monitoring and logging</li>
+<li>Add documentation</li>
+<li>Set up CI/CD pipeline </li>
+</ol>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../DATABASE_STRUCTURE/" class="btn btn-neutral float-left" title="Структура базы данных"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../MVP_ROADMAP/" class="btn btn-neutral float-right" title="Дорожная карта MVP">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../DATABASE_STRUCTURE/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../MVP_ROADMAP/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Архитектура SaaS/Express - Velvet Secrets Online Shop Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u0410\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430 SaaS/Express";
+        var mkdocs_page_input_path = "SAAS_EXPRESS_ARCHITECTURE.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Velvet Secrets Online Shop Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../README.md">Главная</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../TECH_STACK/">Технический стек</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Архитектура</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../BACKEND_ARCHITECTURE/">Архитектура backend</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Архитектура SaaS/Express</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#system-overview">System Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-express-backend-structure">1. Express Backend Structure</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-supabase-database-schema">2. Supabase Database Schema</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-express-api-implementation">3. Express API Implementation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-authentication-flow">4. Authentication Flow</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-rate-limiting-caching">5. Rate Limiting &amp; Caching</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6-background-jobs">6. Background Jobs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#7-error-handling">7. Error Handling</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#8-environment-configuration">8. Environment Configuration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#9-deployment-setup">9. Deployment Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#10-implementation-steps">10. Implementation Steps</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#11-monitoring-logging">11. Monitoring &amp; Logging</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ADVANCED_ARCHITECTURE/">Расширенная архитектура</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../DATABASE_STRUCTURE/">Структура базы данных</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PROJECT_STRUCTURE/">Структура проекта</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Дорожные карты</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../MVP_ROADMAP/">Дорожная карта MVP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../IMPLEMENTATION_ROADMAP/">Дорожная карта реализации</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Разработка</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../DEVELOPMENT_TRACKER/">Трекер разработки</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../FRONTEND_STATUS/">Frontend статус</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Velvet Secrets Online Shop Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Архитектура</li>
+      <li class="breadcrumb-item active">Архитектура SaaS/Express</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="saas-architecture-with-express-supabase">SaaS Architecture with Express &amp; Supabase</h1>
+<h2 id="system-overview">System Overview</h2>
+<pre><code class="language-mermaid">graph TD
+    Client[Next.js Frontend] --&gt; Express[Express API Server]
+    Express --&gt; Supabase[(Supabase)]
+    Express --&gt; Redis[(Redis Cache)]
+    Express --&gt; Queue[Bull Queue]
+    Queue --&gt; Workers[Background Workers]
+    Supabase --&gt; Auth[Supabase Auth]
+    Supabase --&gt; Storage[Supabase Storage]
+    Supabase --&gt; RLS[Row Level Security]
+</code></pre>
+<h2 id="1-express-backend-structure">1. Express Backend Structure</h2>
+<pre><code class="language-typescript">src/
+├── api/
+│   ├── routes/
+│   │   ├── auth.routes.ts
+│   │   ├── organizations.routes.ts
+│   │   ├── projects.routes.ts
+│   │   └── users.routes.ts
+│   ├── middlewares/
+│   │   ├── auth.middleware.ts
+│   │   ├── rateLimit.middleware.ts
+│   │   └── validation.middleware.ts
+│   └── controllers/
+│       ├── auth.controller.ts
+│       ├── organizations.controller.ts
+│       └── projects.controller.ts
+├── services/
+│   ├── supabase.service.ts
+│   ├── cache.service.ts
+│   └── queue.service.ts
+├── types/
+│   └── index.ts
+└── utils/
+    ├── logger.ts
+    └── errors.ts
+</code></pre>
+<h2 id="2-supabase-database-schema">2. Supabase Database Schema</h2>
+<pre><code class="language-sql">-- Enable RLS
+alter table public.users enable row level security;
+alter table public.organizations enable row level security;
+alter table public.projects enable row level security;
+
+-- Core Tables
+create table public.users (
+  id uuid references auth.users primary key,
+  email text unique,
+  full_name text,
+  avatar_url text,
+  created_at timestamptz default now(),
+  updated_at timestamptz default now()
+);
+
+create table public.organizations (
+  id uuid default gen_random_uuid() primary key,
+  name text not null,
+  slug text unique not null,
+  plan_id text references public.subscription_plans(id),
+  owner_id uuid references public.users(id),
+  created_at timestamptz default now()
+);
+
+create table public.projects (
+  id uuid default gen_random_uuid() primary key,
+  name text not null,
+  organization_id uuid references public.organizations(id),
+  created_at timestamptz default now(),
+  updated_at timestamptz default now()
+);
+
+-- Subscription Management
+create table public.subscription_plans (
+  id text primary key,
+  name text not null,
+  price numeric not null,
+  features jsonb default '{}'::jsonb
+);
+
+-- RLS Policies
+create policy &quot;Users can read own data&quot;
+  on public.users
+  for select
+  using (auth.uid() = id);
+
+create policy &quot;Organization members can access org data&quot;
+  on public.organizations
+  for all
+  using (
+    auth.uid() in (
+      select user_id from public.organization_members
+      where organization_id = id
+    )
+  );
+</code></pre>
+<h2 id="3-express-api-implementation">3. Express API Implementation</h2>
+<pre><code class="language-typescript">// src/api/controllers/organizations.controller.ts
+import { supabase } from '../services/supabase.service';
+import { redis } from '../services/cache.service';
+
+export class OrganizationsController {
+  async create(req: Request, res: Response) {
+    const { name, slug } = req.body;
+    const userId = req.user.id;
+
+    const { data, error } = await supabase
+      .from('organizations')
+      .insert({
+        name,
+        slug,
+        owner_id: userId
+      })
+      .select()
+      .single();
+
+    if (error) throw new ApiError(400, error.message);
+
+    // Cache organization data
+    await redis.set(`org:${data.id}`, JSON.stringify(data));
+
+    return res.json(data);
+  }
+
+  async getProjects(req: Request, res: Response) {
+    const { orgId } = req.params;
+
+    // Try cache first
+    const cached = await redis.get(`org:${orgId}:projects`);
+    if (cached) return res.json(JSON.parse(cached));
+
+    const { data, error } = await supabase
+      .from('projects')
+      .select('*')
+      .eq('organization_id', orgId);
+
+    if (error) throw new ApiError(400, error.message);
+
+    // Cache results
+    await redis.setex(`org:${orgId}:projects`, 300, JSON.stringify(data));
+
+    return res.json(data);
+  }
+}
+</code></pre>
+<h2 id="4-authentication-flow">4. Authentication Flow</h2>
+<pre><code class="language-typescript">// src/api/middlewares/auth.middleware.ts
+import { supabase } from '../services/supabase.service';
+
+export const authMiddleware = async (req: Request, res: Response, next: NextFunction) =&gt; {
+  const token = req.headers.authorization?.split(' ')[1];
+  if (!token) throw new UnauthorizedError();
+
+  const { data: { user }, error } = await supabase.auth.getUser(token);
+  if (error) throw new UnauthorizedError(error.message);
+
+  req.user = user;
+  next();
+};
+
+// Usage in routes
+router.get('/organizations', authMiddleware, organizationsController.list);
+</code></pre>
+<h2 id="5-rate-limiting-caching">5. Rate Limiting &amp; Caching</h2>
+<pre><code class="language-typescript">// src/services/cache.service.ts
+import { Redis } from 'ioredis';
+import { RateLimiterRedis } from 'rate-limiter-flexible';
+
+export const rateLimiter = new RateLimiterRedis({
+  storeClient: redis,
+  points: 10, // Number of points
+  duration: 1, // Per second
+  keyPrefix: 'middleware',
+});
+
+// Middleware implementation
+export const rateLimitMiddleware = async (req: Request, res: Response, next: NextFunction) =&gt; {
+  try {
+    await rateLimiter.consume(req.ip);
+    next();
+  } catch {
+    throw new TooManyRequestsError();
+  }
+};
+</code></pre>
+<h2 id="6-background-jobs">6. Background Jobs</h2>
+<pre><code class="language-typescript">// src/services/queue.service.ts
+import Bull from 'bull';
+
+interface EmailJob {
+  to: string;
+  template: string;
+  data: Record&lt;string, any&gt;;
+}
+
+export const emailQueue = new Bull&lt;EmailJob&gt;('email-queue', {
+  redis: process.env.REDIS_URL,
+  defaultJobOptions: {
+    attempts: 3,
+    backoff: {
+      type: 'exponential',
+      delay: 1000,
+    },
+  },
+});
+
+// Process emails
+emailQueue.process(async (job) =&gt; {
+  const { to, template, data } = job.data;
+  // Implement email sending logic
+});
+</code></pre>
+<h2 id="7-error-handling">7. Error Handling</h2>
+<pre><code class="language-typescript">// src/utils/errors.ts
+export class ApiError extends Error {
+  constructor(
+    public statusCode: number,
+    message: string,
+    public code?: string
+  ) {
+    super(message);
+  }
+}
+
+// Global error handler
+export const errorHandler = (
+  err: Error,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) =&gt; {
+  if (err instanceof ApiError) {
+    return res.status(err.statusCode).json({
+      error: {
+        code: err.code,
+        message: err.message
+      }
+    });
+  }
+
+  return res.status(500).json({
+    error: {
+      code: 'INTERNAL_ERROR',
+      message: 'An internal error occurred'
+    }
+  });
+};
+</code></pre>
+<h2 id="8-environment-configuration">8. Environment Configuration</h2>
+<pre><code class="language-typescript">// src/config/index.ts
+export const config = {
+  supabase: {
+    url: process.env.SUPABASE_URL!,
+    key: process.env.SUPABASE_SERVICE_KEY!,
+    anonKey: process.env.SUPABASE_ANON_KEY!
+  },
+  redis: {
+    url: process.env.REDIS_URL!
+  },
+  server: {
+    port: process.env.PORT || 3000,
+    env: process.env.NODE_ENV || 'development'
+  }
+};
+</code></pre>
+<h2 id="9-deployment-setup">9. Deployment Setup</h2>
+<pre><code class="language-yaml"># docker-compose.yml
+version: '3.8'
+services:
+  api:
+    build: .
+    environment:
+      - NODE_ENV=production
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_SERVICE_KEY=${SUPABASE_SERVICE_KEY}
+      - REDIS_URL=${REDIS_URL}
+    ports:
+      - &quot;3000:3000&quot;
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - &quot;6379:6379&quot;
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:
+</code></pre>
+<h2 id="10-implementation-steps">10. Implementation Steps</h2>
+<ol>
+<li><strong>Initial Setup (Week 1)</strong></li>
+<li>Set up Express with TypeScript</li>
+<li>Configure Supabase connection</li>
+<li>
+<p>Implement basic auth flow</p>
+</li>
+<li>
+<p><strong>Core Features (Week 2)</strong></p>
+</li>
+<li>Create database schema</li>
+<li>Implement CRUD operations</li>
+<li>
+<p>Set up Redis caching</p>
+</li>
+<li>
+<p><strong>Business Logic (Week 3)</strong></p>
+</li>
+<li>Implement organization management</li>
+<li>Set up background jobs</li>
+<li>
+<p>Add email notifications</p>
+</li>
+<li>
+<p><strong>Polish &amp; Launch (Week 4)</strong></p>
+</li>
+<li>Add monitoring (Sentry)</li>
+<li>Implement rate limiting</li>
+<li>Deploy to production</li>
+</ol>
+<h2 id="11-monitoring-logging">11. Monitoring &amp; Logging</h2>
+<pre><code class="language-typescript">// src/utils/logger.ts
+import winston from 'winston';
+
+export const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.json(),
+  defaultMeta: { service: 'api' },
+  transports: [
+    new winston.transports.File({ filename: 'error.log', level: 'error' }),
+    new winston.transports.File({ filename: 'combined.log' })
+  ]
+});
+
+if (process.env.NODE_ENV !== 'production') {
+  logger.add(new winston.transports.Console({
+    format: winston.format.simple()
+  }));
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../BACKEND_ARCHITECTURE/" class="btn btn-neutral float-left" title="Архитектура backend"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ADVANCED_ARCHITECTURE/" class="btn btn-neutral float-right" title="Расширенная архитектура">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../BACKEND_ARCHITECTURE/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ADVANCED_ARCHITECTURE/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

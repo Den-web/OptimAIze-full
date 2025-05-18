@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Дорожная карта реализации - Velvet Secrets Online Shop Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u0414\u043e\u0440\u043e\u0436\u043d\u0430\u044f \u043a\u0430\u0440\u0442\u0430 \u0440\u0435\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u0438";
+        var mkdocs_page_input_path = "IMPLEMENTATION_ROADMAP.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Velvet Secrets Online Shop Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../README.md">Главная</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../TECH_STACK/">Технический стек</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Архитектура</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../BACKEND_ARCHITECTURE/">Архитектура backend</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SAAS_EXPRESS_ARCHITECTURE/">Архитектура SaaS/Express</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ADVANCED_ARCHITECTURE/">Расширенная архитектура</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../DATABASE_STRUCTURE/">Структура базы данных</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PROJECT_STRUCTURE/">Структура проекта</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Дорожные карты</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../MVP_ROADMAP/">Дорожная карта MVP</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Дорожная карта реализации</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#phase-0-project-setup-week-1">Phase 0: Project Setup (Week 1)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#phase-1-core-infrastructure-week-2">Phase 1: Core Infrastructure (Week 2)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#phase-2-feature-development-weeks-3-4">Phase 2: Feature Development (Weeks 3-4)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#phase-3-frontend-development-weeks-5-6">Phase 3: Frontend Development (Weeks 5-6)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#phase-4-advanced-features-weeks-7-8">Phase 4: Advanced Features (Weeks 7-8)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#phase-5-testing-optimization-weeks-9-10">Phase 5: Testing &amp; Optimization (Weeks 9-10)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#phase-6-production-preparation-weeks-11-12">Phase 6: Production Preparation (Weeks 11-12)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#key-technical-decisions">Key Technical Decisions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#frontend">Frontend</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#backend">Backend</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#infrastructure">Infrastructure</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#monitoring">Monitoring</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#development-standards">Development Standards</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#code-organization">Code Organization</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#git-workflow">Git Workflow</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#testing-requirements">Testing Requirements</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#documentation-requirements">Documentation Requirements</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#quality-gates">Quality Gates</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#code-quality">Code Quality</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#performance">Performance</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#security">Security</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#monitoring-alerts">Monitoring &amp; Alerts</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#key-metrics">Key Metrics</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#alert-thresholds">Alert Thresholds</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rollout-strategy">Rollout Strategy</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#stage-1-internal-testing">Stage 1: Internal Testing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#stage-2-beta-testing">Stage 2: Beta Testing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#stage-3-soft-launch">Stage 3: Soft Launch</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#stage-4-full-launch">Stage 4: Full Launch</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#success-criteria">Success Criteria</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#technical">Technical</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#business">Business</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#risk-mitigation">Risk Mitigation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#technical-risks">Technical Risks</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#business-risks">Business Risks</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#support-plan">Support Plan</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#level-1-basic-support">Level 1: Basic Support</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#level-2-premium-support">Level 2: Premium Support</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#level-3-enterprise-support">Level 3: Enterprise Support</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Разработка</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../DEVELOPMENT_TRACKER/">Трекер разработки</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../FRONTEND_STATUS/">Frontend статус</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Velvet Secrets Online Shop Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Дорожные карты</li>
+      <li class="breadcrumb-item active">Дорожная карта реализации</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="implementation-roadmap">Implementation Roadmap</h1>
+<h2 id="phase-0-project-setup-week-1">Phase 0: Project Setup (Week 1)</h2>
+<ul>
+<li>[ ] Initialize monorepo structure</li>
+<li>[ ] Set up development environment</li>
+<li>[ ] Configure base CI/CD pipeline</li>
+<li>[ ] Set up Supabase project</li>
+</ul>
+<h2 id="phase-1-core-infrastructure-week-2">Phase 1: Core Infrastructure (Week 2)</h2>
+<ul>
+<li>[ ] Express server setup with TypeScript</li>
+<li>[ ] Database schema implementation</li>
+<li>[ ] Basic auth flow</li>
+<li>[ ] Redis setup</li>
+<li>[ ] Base API structure</li>
+</ul>
+<h2 id="phase-2-feature-development-weeks-3-4">Phase 2: Feature Development (Weeks 3-4)</h2>
+<ul>
+<li>[ ] User management</li>
+<li>[ ] Organization management</li>
+<li>[ ] Project management</li>
+<li>[ ] Billing integration</li>
+<li>[ ] File management</li>
+</ul>
+<h2 id="phase-3-frontend-development-weeks-5-6">Phase 3: Frontend Development (Weeks 5-6)</h2>
+<ul>
+<li>[ ] Next.js setup</li>
+<li>[ ] Component library</li>
+<li>[ ] Authentication UI</li>
+<li>[ ] Dashboard implementation</li>
+<li>[ ] Settings and profile pages</li>
+</ul>
+<h2 id="phase-4-advanced-features-weeks-7-8">Phase 4: Advanced Features (Weeks 7-8)</h2>
+<ul>
+<li>[ ] Real-time features</li>
+<li>[ ] Analytics</li>
+<li>[ ] Notifications</li>
+<li>[ ] Search functionality</li>
+<li>[ ] API documentation</li>
+</ul>
+<h2 id="phase-5-testing-optimization-weeks-9-10">Phase 5: Testing &amp; Optimization (Weeks 9-10)</h2>
+<ul>
+<li>[ ] Unit tests</li>
+<li>[ ] Integration tests</li>
+<li>[ ] Performance optimization</li>
+<li>[ ] Security hardening</li>
+<li>[ ] Load testing</li>
+</ul>
+<h2 id="phase-6-production-preparation-weeks-11-12">Phase 6: Production Preparation (Weeks 11-12)</h2>
+<ul>
+<li>[ ] Monitoring setup</li>
+<li>[ ] Backup systems</li>
+<li>[ ] Production environment</li>
+<li>[ ] Documentation</li>
+<li>[ ] User acceptance testing</li>
+</ul>
+<h2 id="key-technical-decisions">Key Technical Decisions</h2>
+<h3 id="frontend">Frontend</h3>
+<ul>
+<li>Next.js App Router for routing</li>
+<li>Zustand for state management</li>
+<li>TanStack Query for data fetching</li>
+<li>Shadcn/ui for components</li>
+<li>TypeScript for type safety</li>
+</ul>
+<h3 id="backend">Backend</h3>
+<ul>
+<li>Express with TypeScript</li>
+<li>Supabase for database and auth</li>
+<li>Redis for caching and queues</li>
+<li>Bull for background jobs</li>
+<li>Winston for logging</li>
+</ul>
+<h3 id="infrastructure">Infrastructure</h3>
+<ul>
+<li>Docker for containerization</li>
+<li>GitHub Actions for CI/CD</li>
+<li>Vercel for frontend hosting</li>
+<li>Railway for backend hosting</li>
+<li>Upstash for Redis</li>
+</ul>
+<h3 id="monitoring">Monitoring</h3>
+<ul>
+<li>Sentry for error tracking</li>
+<li>Prometheus for metrics</li>
+<li>Grafana for dashboards</li>
+<li>ELK stack for logs</li>
+<li>Datadog for APM</li>
+</ul>
+<h2 id="development-standards">Development Standards</h2>
+<h3 id="code-organization">Code Organization</h3>
+<pre><code>monorepo/
+├── apps/
+│   ├── web/          # Next.js frontend
+│   └── api/          # Express backend
+├── packages/
+│   ├── ui/           # Shared UI components
+│   ├── config/       # Shared configuration
+│   └── types/        # Shared TypeScript types
+└── tools/            # Development tools
+</code></pre>
+<h3 id="git-workflow">Git Workflow</h3>
+<ol>
+<li>Feature branches from <code>develop</code></li>
+<li>PR review required</li>
+<li>Squash merge to <code>develop</code></li>
+<li>Release branches from <code>develop</code></li>
+<li>Tag releases</li>
+</ol>
+<h3 id="testing-requirements">Testing Requirements</h3>
+<ul>
+<li>Unit tests: 80% coverage</li>
+<li>Integration tests for critical paths</li>
+<li>E2E tests for user flows</li>
+<li>Performance testing for API endpoints</li>
+<li>Security testing for auth flows</li>
+</ul>
+<h3 id="documentation-requirements">Documentation Requirements</h3>
+<ul>
+<li>API documentation (OpenAPI)</li>
+<li>Component documentation (Storybook)</li>
+<li>Architecture documentation</li>
+<li>Deployment documentation</li>
+<li>User documentation</li>
+</ul>
+<h2 id="quality-gates">Quality Gates</h2>
+<h3 id="code-quality">Code Quality</h3>
+<ul>
+<li>ESLint passing</li>
+<li>TypeScript strict mode</li>
+<li>No critical security vulnerabilities</li>
+<li>Test coverage met</li>
+<li>PR review approved</li>
+</ul>
+<h3 id="performance">Performance</h3>
+<ul>
+<li>Page load &lt; 3s</li>
+<li>API response &lt; 500ms</li>
+<li>Lighthouse score &gt; 90</li>
+<li>Core Web Vitals passing</li>
+<li>Load test success</li>
+</ul>
+<h3 id="security">Security</h3>
+<ul>
+<li>OWASP top 10 addressed</li>
+<li>Security scan passing</li>
+<li>Auth flow verified</li>
+<li>Data encryption verified</li>
+<li>Rate limiting tested</li>
+</ul>
+<h2 id="monitoring-alerts">Monitoring &amp; Alerts</h2>
+<h3 id="key-metrics">Key Metrics</h3>
+<ul>
+<li>Request latency</li>
+<li>Error rates</li>
+<li>CPU/Memory usage</li>
+<li>Database performance</li>
+<li>Cache hit rates</li>
+</ul>
+<h3 id="alert-thresholds">Alert Thresholds</h3>
+<ul>
+<li>Error rate &gt; 1%</li>
+<li>Latency &gt; 1s</li>
+<li>CPU &gt; 80%</li>
+<li>Memory &gt; 85%</li>
+<li>Disk space &gt; 90%</li>
+</ul>
+<h2 id="rollout-strategy">Rollout Strategy</h2>
+<h3 id="stage-1-internal-testing">Stage 1: Internal Testing</h3>
+<ul>
+<li>Team testing</li>
+<li>Bug fixes</li>
+<li>Performance tuning</li>
+</ul>
+<h3 id="stage-2-beta-testing">Stage 2: Beta Testing</h3>
+<ul>
+<li>Selected users</li>
+<li>Feedback collection</li>
+<li>Feature adjustments</li>
+</ul>
+<h3 id="stage-3-soft-launch">Stage 3: Soft Launch</h3>
+<ul>
+<li>10% production traffic</li>
+<li>Monitor metrics</li>
+<li>Gradual increase</li>
+</ul>
+<h3 id="stage-4-full-launch">Stage 4: Full Launch</h3>
+<ul>
+<li>100% traffic</li>
+<li>Close monitoring</li>
+<li>Quick response team</li>
+</ul>
+<h2 id="success-criteria">Success Criteria</h2>
+<h3 id="technical">Technical</h3>
+<ul>
+<li>All tests passing</li>
+<li>Performance metrics met</li>
+<li>Security requirements met</li>
+<li>Monitoring in place</li>
+<li>Documentation complete</li>
+</ul>
+<h3 id="business">Business</h3>
+<ul>
+<li>User signup flow working</li>
+<li>Payment processing working</li>
+<li>Core features functional</li>
+<li>Analytics tracking</li>
+<li>Support system ready</li>
+</ul>
+<h2 id="risk-mitigation">Risk Mitigation</h2>
+<h3 id="technical-risks">Technical Risks</h3>
+<ul>
+<li>Database performance</li>
+<li>API scalability</li>
+<li>Cache invalidation</li>
+<li>Real-time sync</li>
+<li>Data migration</li>
+</ul>
+<h3 id="business-risks">Business Risks</h3>
+<ul>
+<li>User adoption</li>
+<li>Feature completeness</li>
+<li>Performance issues</li>
+<li>Security breaches</li>
+<li>Data compliance</li>
+</ul>
+<h2 id="support-plan">Support Plan</h2>
+<h3 id="level-1-basic-support">Level 1: Basic Support</h3>
+<ul>
+<li>Documentation</li>
+<li>FAQs</li>
+<li>Email support</li>
+<li>Response time: 24h</li>
+</ul>
+<h3 id="level-2-premium-support">Level 2: Premium Support</h3>
+<ul>
+<li>Priority email</li>
+<li>Chat support</li>
+<li>Phone support</li>
+<li>Response time: 4h</li>
+</ul>
+<h3 id="level-3-enterprise-support">Level 3: Enterprise Support</h3>
+<ul>
+<li>Dedicated support</li>
+<li>Custom features</li>
+<li>SLA guarantees</li>
+<li>Response time: 1h </li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../MVP_ROADMAP/" class="btn btn-neutral float-left" title="Дорожная карта MVP"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../DEVELOPMENT_TRACKER/" class="btn btn-neutral float-right" title="Трекер разработки">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../MVP_ROADMAP/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../DEVELOPMENT_TRACKER/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

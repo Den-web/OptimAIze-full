@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Трекер разработки - Velvet Secrets Online Shop Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u0422\u0440\u0435\u043a\u0435\u0440 \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0438";
+        var mkdocs_page_input_path = "DEVELOPMENT_TRACKER.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Velvet Secrets Online Shop Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="" href="../README.md">Главная</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../TECH_STACK/">Технический стек</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Архитектура</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../BACKEND_ARCHITECTURE/">Архитектура backend</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../SAAS_EXPRESS_ARCHITECTURE/">Архитектура SaaS/Express</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ADVANCED_ARCHITECTURE/">Расширенная архитектура</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../DATABASE_STRUCTURE/">Структура базы данных</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PROJECT_STRUCTURE/">Структура проекта</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Дорожные карты</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../MVP_ROADMAP/">Дорожная карта MVP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../IMPLEMENTATION_ROADMAP/">Дорожная карта реализации</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Разработка</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Трекер разработки</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#status-indicators">Status Indicators</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#phase-1-initial-setup">Phase 1: Initial Setup</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#express-typescript-setup">Express &amp; TypeScript Setup</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#supabase-setup">Supabase Setup</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#phase-2-core-features">Phase 2: Core Features</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#user-management">User Management</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#organization-management">Organization Management</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#project-management">Project Management</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#phase-3-infrastructure">Phase 3: Infrastructure</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#caching-layer">Caching Layer</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#background-jobs">Background Jobs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#api-features">API Features</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#phase-4-testing-quality">Phase 4: Testing &amp; Quality</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#testing">Testing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#code-quality">Code Quality</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#phase-5-deployment">Phase 5: Deployment</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#development-environment">Development Environment</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#production-setup">Production Setup</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-use-this-tracker">How to Use This Tracker</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#current-focus">Current Focus</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#blocked-items">Blocked Items</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#next-up">Next Up</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../FRONTEND_STATUS/">Frontend статус</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Velvet Secrets Online Shop Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Разработка</li>
+      <li class="breadcrumb-item active">Трекер разработки</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="development-progress-tracker">Development Progress Tracker</h1>
+<h2 id="status-indicators">Status Indicators</h2>
+<ul>
+<li>⌛ Pending</li>
+<li>🚧 In Progress</li>
+<li>✅ Completed</li>
+<li>🔍 Review Needed</li>
+<li>❌ Blocked</li>
+</ul>
+<h2 id="phase-1-initial-setup">Phase 1: Initial Setup</h2>
+<h3 id="express-typescript-setup">Express &amp; TypeScript Setup</h3>
+<ul>
+<li>⌛ Initialize project with pnpm</li>
+<li>⌛ Configure TypeScript</li>
+<li>⌛ Set up Express server</li>
+<li>⌛ Add basic middleware</li>
+<li>⌛ Test server running</li>
+</ul>
+<h3 id="supabase-setup">Supabase Setup</h3>
+<ul>
+<li>⌛ Create Supabase project</li>
+<li>⌛ Set up database schemas</li>
+<li>⌛ Configure RLS policies</li>
+<li>⌛ Test database connection</li>
+<li>⌛ Set up authentication</li>
+</ul>
+<h2 id="phase-2-core-features">Phase 2: Core Features</h2>
+<h3 id="user-management">User Management</h3>
+<ul>
+<li>⌛ User registration</li>
+<li>⌛ User authentication</li>
+<li>⌛ User profile CRUD</li>
+<li>⌛ Password reset flow</li>
+<li>⌛ Email verification</li>
+</ul>
+<h3 id="organization-management">Organization Management</h3>
+<ul>
+<li>⌛ Create organization</li>
+<li>⌛ Invite members</li>
+<li>⌛ Manage roles</li>
+<li>⌛ Organization settings</li>
+<li>⌛ Billing integration</li>
+</ul>
+<h3 id="project-management">Project Management</h3>
+<ul>
+<li>⌛ Create projects</li>
+<li>⌛ Project settings</li>
+<li>⌛ Team management</li>
+<li>⌛ Project analytics</li>
+<li>⌛ Resource management</li>
+</ul>
+<h2 id="phase-3-infrastructure">Phase 3: Infrastructure</h2>
+<h3 id="caching-layer">Caching Layer</h3>
+<ul>
+<li>⌛ Set up Redis</li>
+<li>⌛ Implement caching strategy</li>
+<li>⌛ Cache invalidation</li>
+<li>⌛ Rate limiting</li>
+<li>⌛ Session management</li>
+</ul>
+<h3 id="background-jobs">Background Jobs</h3>
+<ul>
+<li>⌛ Set up Bull</li>
+<li>⌛ Email queue</li>
+<li>⌛ Analytics processing</li>
+<li>⌛ Scheduled tasks</li>
+<li>⌛ Error handling</li>
+</ul>
+<h3 id="api-features">API Features</h3>
+<ul>
+<li>⌛ API documentation</li>
+<li>⌛ Request validation</li>
+<li>⌛ Response formatting</li>
+<li>⌛ Error handling</li>
+<li>⌛ Logging system</li>
+</ul>
+<h2 id="phase-4-testing-quality">Phase 4: Testing &amp; Quality</h2>
+<h3 id="testing">Testing</h3>
+<ul>
+<li>⌛ Unit tests setup</li>
+<li>⌛ Integration tests</li>
+<li>⌛ API tests</li>
+<li>⌛ Load testing</li>
+<li>⌛ Security testing</li>
+</ul>
+<h3 id="code-quality">Code Quality</h3>
+<ul>
+<li>⌛ ESLint setup</li>
+<li>⌛ Prettier setup</li>
+<li>⌛ Git hooks</li>
+<li>⌛ CI/CD pipeline</li>
+<li>⌛ Code review process</li>
+</ul>
+<h2 id="phase-5-deployment">Phase 5: Deployment</h2>
+<h3 id="development-environment">Development Environment</h3>
+<ul>
+<li>⌛ Local development setup</li>
+<li>⌛ Docker development</li>
+<li>⌛ Environment variables</li>
+<li>⌛ Development database</li>
+<li>⌛ Local testing</li>
+</ul>
+<h3 id="production-setup">Production Setup</h3>
+<ul>
+<li>⌛ Production configuration</li>
+<li>⌛ SSL/TLS setup</li>
+<li>⌛ Domain configuration</li>
+<li>⌛ Monitoring setup</li>
+<li>⌛ Backup strategy</li>
+</ul>
+<h2 id="how-to-use-this-tracker">How to Use This Tracker</h2>
+<ol>
+<li><strong>Starting a Task</strong></li>
+<li>Change status from ⌛ to 🚧</li>
+<li>Create branch: <code>feature/task-name</code></li>
+<li>
+<p>Comment in PR: "Starting task: [Task Name]"</p>
+</li>
+<li>
+<p><strong>Completing a Task</strong></p>
+</li>
+<li>Change status from 🚧 to 🔍</li>
+<li>Create PR</li>
+<li>
+<p>Comment: "Ready for review: [Task Name]"</p>
+</li>
+<li>
+<p><strong>After Review</strong></p>
+</li>
+<li>If approved: Change status to ✅</li>
+<li>If changes needed: Keep at 🔍</li>
+<li>
+<p>If blocked: Change to ❌</p>
+</li>
+<li>
+<p><strong>Updating Progress</strong>
+   ```bash
+   # Example Git commit
+   git commit -m "🚧 [Phase 1] Setting up Express server</p>
+</li>
+<li>
+<p>Initialized Express</p>
+</li>
+<li>Added TypeScript config</li>
+<li>Set up basic middleware</li>
+<li>TODO: Add error handling"
+   ```</li>
+</ol>
+<h2 id="current-focus">Current Focus</h2>
+<p>[We'll update this section with our current focus area]</p>
+<h2 id="blocked-items">Blocked Items</h2>
+<p>[We'll list any blocked items here with reasons]</p>
+<h2 id="next-up">Next Up</h2>
+<p>[We'll list the next 3-5 items we're planning to tackle]</p>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>Use emoji in commit messages to track progress</li>
+<li>Always update this file when starting/completing tasks</li>
+<li>Add notes about blockers or dependencies</li>
+<li>Keep the "Current Focus" section updated </li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../IMPLEMENTATION_ROADMAP/" class="btn btn-neutral float-left" title="Дорожная карта реализации"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../FRONTEND_STATUS/" class="btn btn-neutral float-right" title="Frontend статус">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../IMPLEMENTATION_ROADMAP/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../FRONTEND_STATUS/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
